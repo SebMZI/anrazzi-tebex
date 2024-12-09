@@ -1,0 +1,49 @@
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
+import Button from "./Button";
+import ScriptModal from "./ScriptModal";
+import { createPortal } from "react-dom";
+
+const ResourceCard = ({ resource }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <article className="border-[1px] border-[rgba(255,255,255,0.5)] rounded-md p-5 max-w-[270px] w-[270px] flex flex-col gap-5">
+      <Image
+        src={resource?.image}
+        alt={resource?.name}
+        width={230}
+        height={165}
+        className="w-full max-h-[150px] h-full object-cover rounded-md  "
+      />
+      <div>
+        <h4 className="text-2xl font-medium">{resource?.name}</h4>
+        <p
+          className="ellipsis-text line-clamp-1 opacity-60"
+          dangerouslySetInnerHTML={{ __html: resource?.description }}
+        />
+        {showModal &&
+          createPortal(
+            <ScriptModal
+              onClose={() => setShowModal(false)}
+              resource={resource}
+            />,
+            document.body
+          )}
+        <button
+          className="underline opacity-60"
+          onClick={() => setShowModal(true)}
+        >
+          see more
+        </button>
+      </div>
+      <div className="flex justify-between items-center">
+        <p className="text-xl font-medium">{resource?.base_price} €</p>
+        <Button link="" text={"Buy"} action={() => {}} />
+      </div>
+    </article>
+  );
+};
+
+export default ResourceCard;
