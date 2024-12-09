@@ -8,7 +8,7 @@ const StoreCollections = () => {
   async function fetchCat() {
     setIsLoading(true);
     const response = await fetch(
-      `https://headless.tebex.io/api/accounts/${process.env.NEXT_PUBLIC_TEBEX_PUBLIC_KEY}/categories?includePackages=1`,
+      `https://headless.tebex.io/api/accounts/${process.env.NEXT_PUBLIC_TEBEX_PUBLIC}/categories?includePackages=1`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
