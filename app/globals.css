@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #141414;
+  --foreground: #ededed;
+  --light-black: #1a1a1a;
+  --ascent: #1fe6ed;
+  --font-white: #ffffff;
+  --font-black: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #141414;
+    --font-white: #000000;
+    --font-black: #ffffff;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "UberMove", sans-serif;
+  font-weight: 400;
+}
+
+@layer base {
+  @font-face {
+    font-family: "UberMove";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/UberMove-Regular.woff) format("woff");
+  }
+  @font-face {
+    font-family: "UberMove";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(/fonts/UberMove-Light.woff) format("woff");
+  }
+  @font-face {
+    font-family: "UberMove";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(/fonts/UberMove-Medium.woff) format("woff");
+  }
+  @font-face {
+    font-family: "UberMove";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(/fonts/UberMove-Bold.woff) format("woff");
+  }
+}
