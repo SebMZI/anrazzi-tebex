@@ -49,6 +49,12 @@ body {
   font-weight: 400;
 }
 
+.border-white-custom {
+  border-color: transparent;
+  background: linear-gradient(45deg, #1fe6ed, #141414) border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
 @layer base {
   @font-face {
     font-family: "UberMove";

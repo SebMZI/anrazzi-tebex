@@ -97,7 +97,7 @@ const Main = () => {
       </section>
       <section id="cta" className="bg-light-black">
         <div className="max-w-screen-xl py-28 mx-auto">
-          <h2 className="text-[3.5rem] font-bold text-left max-w-4xl leading-tight mb-10 text-black-custom">
+          <h2 className="text-[3.5rem] font-bold text-left max-w-4xl leading-tight mb-10 text-white-custom">
             Turn your server into a <span className="text-ascent">massive</span>{" "}
             success
           </h2>
