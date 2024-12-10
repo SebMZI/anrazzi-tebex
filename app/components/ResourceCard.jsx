@@ -9,7 +9,7 @@ const ResourceCard = ({ resource }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <article className="border-[1px] border-[rgba(255,255,255,0.5)] rounded-md p-5 max-w-[270px] w-[270px] flex flex-col gap-5">
+    <article className="border-[1px] border-border-light rounded-md p-5 max-w-[270px] w-[270px] flex flex-col gap-5">
       <Image
         src={resource?.image}
         alt={resource?.name}

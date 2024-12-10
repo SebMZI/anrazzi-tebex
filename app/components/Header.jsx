@@ -1,24 +1,54 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
   const pathname = usePathname();
-  console.log(pathname);
+
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const updateTheme = () => {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      setTheme(prefersDark ? "dark" : "light");
+    };
+
+    updateTheme();
+
+    const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQueryList.addEventListener("change", updateTheme);
+
+    return () => mediaQueryList.removeEventListener("change", updateTheme);
+  }, []);
+
+  console.log(theme);
 
   return (
     <header className="py-10 border-b-[1px] border-b-[rgba(255,255,255,0.5)]">
       <div className="max-w-screen-xl mx-auto w-full flex justify-between items-center">
         <div>
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/images/anrazzi-logo-transp.png"
-              alt="White geometric form representing Anrazzi's logo"
-              width="148"
-              height="148"
-              className="w-16 h-16"
-            />
+          <Link href="/" className="header-link flex items-center">
+            {theme === "light" ? (
+              <Image
+                src="/images/anrazzi-logo-black.png"
+                alt="Black logo for light mode"
+                width="148"
+                height="148"
+                className="h-16 w-16"
+              />
+            ) : (
+              <Image
+                src="/images/anrazzi-logo-white.png"
+                alt="White logo for dark mode"
+                width="148"
+                height="148"
+                className="h-16 w-16"
+              />
+            )}
             <p className="text-xl font-bold">Anrazzi</p>
           </Link>
         </div>
@@ -35,7 +65,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className="flex justify-center gap-4">
-          <Link href="/">
+          <Link href="/basket">
             <Image
               src="/images/icon-basket.png"
               alt="Basket Icon"

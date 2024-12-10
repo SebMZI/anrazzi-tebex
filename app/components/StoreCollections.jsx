@@ -34,7 +34,7 @@ const StoreCollections = () => {
         <div className="w-full flex flex-col gap-10">
           {isLoading ? (
             <div className="flex flex-col justify-center items-center w-full h-80 gap-3">
-              <div className="animate-spin rounded-full h-8 w-8 border-4 border-white-custom"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-4 border-spinner-custom"></div>
               <p className="text-xl font-medium">Loading...</p>
             </div>
           ) : (

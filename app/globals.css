@@ -31,14 +31,30 @@
   --ascent: #1fe6ed;
   --font-white: #ffffff;
   --font-black: #000000;
+  --border-light: rgba(255, 255, 255, 0.2);
 }
 
-@media (prefers-color-scheme: dark) {
+.logo-light {
+  display: none;
+}
+.logo-dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: light) {
   :root {
     --background: #ffffff;
     --foreground: #141414;
     --font-white: #000000;
     --font-black: #ffffff;
+    --light-black: hsl(0, 0%, 100%);
+    --border-light: rgba(0, 0, 0, 0.2);
+  }
+  .logo-light {
+    display: block;
+  }
+  .logo-dark {
+    display: none;
   }
 }
 
@@ -49,12 +65,13 @@ body {
   font-weight: 400;
 }
 
-.border-white-custom {
+.border-spinner-custom {
   border-color: transparent;
   background: linear-gradient(45deg, #1fe6ed, #141414) border-box;
   mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
 }
+
 @layer base {
   @font-face {
     font-family: "UberMove";
