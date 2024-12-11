@@ -10,6 +10,7 @@ import {
 } from "../utils/fetch";
 import { createNewBasket, decryptCookie } from "../utils/functions";
 import { basketContext } from "../layout";
+import dynamic from "next/dynamic";
 // import Tebex from "@tebexio/tebex.js";
 
 const BasketContent = () => {
