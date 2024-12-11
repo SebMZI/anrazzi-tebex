@@ -40,9 +40,11 @@ const BasketContent = () => {
   }
 
   return (
-    <section id="basketcontent" className="py-[8.5rem]">
-      <div className="max-w-screen-xl mx-auto flex flex-col justify-start items-start gap-16 px-5">
-        <h2 className="w-full text-left font-medium text-5xl">Your cart</h2>
+    <section id="basketcontent" className="py-[4.5rem] sm:py-[8.5rem]">
+      <div className="max-w-screen-xl mx-auto flex flex-col justify-start items-start gap-10 sm:gap-16 px-5">
+        <h2 className="w-full text-left font-medium text-4xl sm:text-5xl">
+          Your cart
+        </h2>
 
         {basket?.packages?.length > 0 ? (
           <div className="w-full flex flex-col gap-3 py-2">
@@ -50,20 +52,20 @@ const BasketContent = () => {
               return (
                 <div
                   key={i}
-                  className="w-full flex justify-between items-center"
+                  className="w-full flex justify-between items-center gap-5 sm:gap-0"
                 >
                   <div className="w-full flex flex-col gap-2">
-                    <h3 className="font-medium text-ascent text-xl">
+                    <h3 className="font-medium text-ascent text-lg sm:text-xl">
                       {script.name}
                     </h3>
                     <p
-                      className="line-clamp-2 text-ellipsis opacity-70"
+                      className="line-clamp-2 text-ellipsis opacity-70 text-sm sm:text-base"
                       dangerouslySetInnerHTML={{
                         __html: script.description,
                       }}
                     ></p>
                   </div>
-                  <div className="w-full flex justify-end gap-4 text-xl">
+                  <div className="w-3/4 sm:w-full flex justify-end gap-4 text-lg sm:text-xl">
                     <p>{script?.in_basket?.price} €</p>
                     <p
                       className="text-red-700 cursor-pointer"
@@ -78,24 +80,26 @@ const BasketContent = () => {
           </div>
         ) : (
           <div className="w-full grid place-content-center">
-            <p className="text-xl">
-              It seems that you haven`&lsquo;t added anything...
+            <p className="text-lg sm:text-xl">
+              It seems that you haven&lsquo;t added anything...
             </p>
           </div>
         )}
         <div className="border-t-2 border-white-custom  py-6 w-full flex flex-col gap-10">
-          <div className=" flex flex-col justify-start items-center gap-2">
+          <div className=" flex flex-col justify-start items-center gap-1 sm:gap-2">
             <div className="w-full flex justify-between items-center ">
-              <h3 className="font-medium text-xl">Total without Taxes</h3>
-              <p className="text-xl">{basket?.base_price} €</p>
+              <h3 className="font-medium text-lg sm:text-xl">
+                Total without Taxes
+              </h3>
+              <p className="text-lg sm:text-xl">{basket?.base_price} €</p>
             </div>
             <div className="w-full flex justify-between items-center">
-              <h3 className="font-medium text-xl">Taxes</h3>
-              <p className="text-xl">{basket?.sales_tax} €</p>
+              <h3 className="font-medium text-lg sm:text-xl">Taxes</h3>
+              <p className="text-lg sm:text-xl">{basket?.sales_tax} €</p>
             </div>
             <div className="w-full flex justify-between items-center">
-              <h3 className="font-medium text-xl">Total</h3>
-              <p className="text-xl">{basket?.total_price} €</p>
+              <h3 className="font-medium text-lg sm:text-xl">Total</h3>
+              <p className="text-lg sm:text-xl">{basket?.total_price} €</p>
             </div>
           </div>
           <Checkout

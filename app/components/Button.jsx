@@ -12,7 +12,7 @@ const Button = ({ text, link = "", type = "", action = () => {} }) => {
             type={type}
             onClick={action}
           >
-            <span className=" font-medium text-base">{text}</span>
+            <span className=" font-medium text-sm sm:text-base">{text}</span>
           </button>
         </Link>
       ) : (
@@ -21,7 +21,7 @@ const Button = ({ text, link = "", type = "", action = () => {} }) => {
           onClick={action}
           type={type}
         >
-          <span className=" font-medium text-base">{text}</span>
+          <span className=" font-medium text-sm sm:text-base">{text}</span>
         </button>
       )}
     </>

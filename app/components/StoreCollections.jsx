@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { basketContext } from "@/app/layout";
 import { createBasket, fetchBasket, getAuthLink } from "../utils/fetch";
-import { decryptCookie } from "../utils/functions";
+import { decryptCookie, showNotification } from "../utils/functions";
 import ResourceCard from "./ResourceCard";
 
 const StoreCollections = () => {
@@ -58,7 +58,7 @@ const StoreCollections = () => {
   }, []);
 
   return (
-    <section id="collections" className="py-[8.5rem]">
+    <section id="collections" className="py-[4.5rem] sm:py-[8.5rem]">
       <div className="max-w-screen-xl mx-auto flex flex-col justify-start items-start gap-16 px-5">
         <h2 className="font-medium text-4xl sm:text-5xl text-left w-full">
           Our Collections

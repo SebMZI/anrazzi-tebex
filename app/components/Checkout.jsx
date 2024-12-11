@@ -1,6 +1,6 @@
 "use client";
 import Button from "./Button";
-import { createNewBasket, decryptCookie } from "../utils/functions";
+import { createNewBasket, decryptCookie, showNotification } from "../utils/functions";
 import Cookies from "js-cookie";
 import { removeCouponFromBasket } from "../utils/fetch";
 const Checkout = ({

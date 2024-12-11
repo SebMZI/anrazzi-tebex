@@ -41,7 +41,6 @@ export const createNewBasket = async (isAuthentificated, setBasketIdent) => {
   try {
     const data = await createBasket();
     if (data?.ident) {
-
       const encryptedBasketIdent = encryptCookie(data.ident);
       setBasketIdent(encryptedBasketIdent);
 
@@ -66,7 +65,6 @@ export const handleAddButton = async (
   const basketIdent = decryptCookie();
 
   if (basketIdent === null) {
-
     try {
       const data = await createBasket();
       if (data?.ident) {
@@ -86,7 +84,7 @@ export const handleAddButton = async (
       console.error("Erreur lors de la création du panier S :", error.message);
     }
   } else if (basketIdent && isAuthentificated) {
-    const authLink = await getAuthLink(data?.ident, window.location.href);
+    const authLink = await getAuthLink(decryptCookie(), window.location.href);
     if (authLink) {
       window.location.assign(authLink);
     }
