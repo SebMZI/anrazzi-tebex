@@ -70,9 +70,10 @@ export const handleAddButton = async (
       const data = await createBasket();
       if (data?.ident) {
         console.log("Nouveau panier créé avec identifiant :", data?.ident);
-
         const encryptedBasketIdent = encryptCookie(data?.ident);
+        console.log("Encrypted Basket :", encryptedBasketIdent);
         setBasketIdent(encryptedBasketIdent);
+        console.log("Basket set");
 
         if (!isAuthentificated) {
           console.log(
