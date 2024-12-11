@@ -30,7 +30,7 @@ const ResourceCard = ({ resource }) => {
   };
 
   return (
-    <article className="border-[1px] border-border-light rounded-md p-5 max-w-[270px] w-[270px] flex flex-col gap-5">
+    <article className="border-[1px] border-border-light rounded-md p-5 w-full sm:max-w-[270px] sm:w-[270px] flex flex-col gap-5">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -63,8 +63,8 @@ const ResourceCard = ({ resource }) => {
           see more
         </button>
       </div>
-      <div className="flex justify-between items-center">
-        <p className="text-xl font-medium">{resource?.base_price} €</p>
+      <div className="flex justify-between items-center gap-5 sm:gap-0">
+        <p className="text-xl font-medium w-full">{resource?.base_price} €</p>
         <Button
           link=""
           text={"Buy"}

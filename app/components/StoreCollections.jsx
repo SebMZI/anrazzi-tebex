@@ -59,8 +59,8 @@ const StoreCollections = () => {
 
   return (
     <section id="collections" className="py-[8.5rem]">
-      <div className="max-w-screen-xl mx-auto flex flex-col justify-start items-start gap-16">
-        <h2 className="font-medium text-5xl text-left w-full">
+      <div className="max-w-screen-xl mx-auto flex flex-col justify-start items-start gap-16 px-5">
+        <h2 className="font-medium text-4xl sm:text-5xl text-left w-full">
           Our Collections
         </h2>
         <div className="w-full flex flex-col gap-10">
@@ -73,7 +73,7 @@ const StoreCollections = () => {
             categoriesData?.map((category, _) => (
               <div key={_} className="flex flex-col gap-8">
                 <h3 className="text-3xl font-medium">{category.name}</h3>
-                <div className="flex">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
                   {category?.packages?.map((scripts, _) => (
                     <ResourceCard resource={scripts} key={_} />
                   ))}
