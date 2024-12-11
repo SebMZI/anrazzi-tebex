@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Cookies from "js-cookie";
 import Button from "./Button";
 import {
@@ -8,11 +8,18 @@ import {
   removeCouponFromBasket,
   fetchBasket,
 } from "../utils/fetch";
-import Tebex from "@tebexio/tebex.js";
+// import Tebex from "@tebexio/tebex.js";
 import { createNewBasket, decryptCookie } from "../utils/functions";
 import { basketContext } from "../layout";
 
 const BasketContent = () => {
+  useEffect(() => {
+    const loadTebex = async () => {
+      await import("@tebexio/tebex.js");
+    };
+    loadTebex();
+  }, []);
+
   const {
     basket,
     setBasket,
