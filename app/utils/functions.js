@@ -57,13 +57,14 @@ export const createNewBasket = async (isAuthentificated, setBasketIdent) => {
 };
 
 export const handleAddButton = async (
+  basket,
   isAuthentificated,
   setBasketIdent,
   setBasket,
   script
 ) => {
   const basketIdent = decryptCookie();
-
+  console.log(basket);
   if (basketIdent === null) {
     try {
       const data = await createBasket();
@@ -83,14 +84,14 @@ export const handleAddButton = async (
     } catch (error) {
       console.error("Erreur lors de la création du panier S :", error.message);
     }
-  } else if (basketIdent && isAuthentificated) {
+  } else if (basketIdent && !isAuthentificated) {
     const authLink = await getAuthLink(decryptCookie(), window.location.href);
     if (authLink) {
       window.location.assign(authLink);
     }
   } else {
     try {
-      const newBasket = await addPackageToBasket(script);
+      const newBasket = await addPackageToBasket(script, basket);
       setBasket(newBasket);
     } catch (e) {
       console.error("Erreur lors de l'ajout au panier :", e.message);

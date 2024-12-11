@@ -70,6 +70,7 @@ const ResourceCard = ({ resource }) => {
           text={"Buy"}
           action={() =>
             handleAddButton(
+              basket,
               isAuthentificated,
               setBasketIdent,
               setBasket,

@@ -56,7 +56,7 @@ export const fetchBasket = async function (basketIdent) {
   }
 };
 
-export const addPackageToBasket = async function (scriptId) {
+export const addPackageToBasket = async function (scriptId, basket) {
   try {
     const response = await fetch(
       `https://headless.tebex.io/api/baskets/${decryptCookie()}/packages`,
@@ -69,9 +69,10 @@ export const addPackageToBasket = async function (scriptId) {
       }
     );
     const data = await response.json();
-    if (data.status !== 200) {
+
+    if (data?.status === 400) {
       showNotification("error", "Failed to add the item");
-      return;
+      return basket;
     }
 
     showNotification("success", "Item successfully added");

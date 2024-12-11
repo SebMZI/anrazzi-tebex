@@ -55,7 +55,7 @@ const StoreCollections = () => {
 
     getBasket(decryptCookie());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isAuthentificated]);
 
   return (
     <section id="collections" className="py-[4.5rem] sm:py-[8.5rem]">
