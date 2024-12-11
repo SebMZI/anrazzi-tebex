@@ -72,6 +72,32 @@ body {
   mask-composite: exclude;
 }
 
+.notification {
+  position: fixed;
+  top: -60px; /* Initially off-screen */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background);
+  color: var(--font-black);
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid var(--font-white);
+  font-size: 16px;
+  z-index: 9999;
+  opacity: 0;
+  transition: top 0.5s ease, opacity 0.5s ease;
+}
+
+.notification.show {
+  top: 20px;
+  opacity: 1;
+}
+
+.notification.hide {
+  top: -60px;
+  opacity: 0;
+}
+
 @layer base {
   @font-face {
     font-family: "UberMove";

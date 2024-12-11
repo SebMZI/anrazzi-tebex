@@ -3,7 +3,6 @@ import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 
 const encryptCookie = (data) => {
-  console.log("Data", data);
   if (data === undefined || data === null) {
     console.error("Données à chiffrer invalides:", data);
     return null;
@@ -26,7 +25,6 @@ const encryptCookie = (data) => {
 
 export const decryptCookie = () => {
   const encryptedData = Cookies.get("basketIdent");
-  console.log(encryptedData);
 
   if (encryptedData) {
     const bytes = CryptoJS.AES.decrypt(
@@ -43,14 +41,10 @@ export const createNewBasket = async (isAuthentificated, setBasketIdent) => {
   try {
     const data = await createBasket();
     if (data?.ident) {
-      console.log("Nouveau panier créé avec identifiant :", data.ident);
 
       const encryptedBasketIdent = encryptCookie(data.ident);
       setBasketIdent(encryptedBasketIdent);
 
-      console.log(
-        "Utilisateur non authentifié. Redirection vers le lien d'authentification..."
-      );
       const authLink = await getAuthLink(data.ident, window.location.href);
       if (authLink) {
         window.location.assign(authLink);
@@ -72,21 +66,14 @@ export const handleAddButton = async (
   const basketIdent = decryptCookie();
 
   if (basketIdent === null) {
-    console.log("Cookie manquant ou invalide. Création d'un nouveau panier...");
 
     try {
       const data = await createBasket();
       if (data?.ident) {
-        console.log("Nouveau panier créé avec identifiant :", data?.ident);
         const encryptedBasketIdent = encryptCookie(data?.ident);
-        console.log("Encrypted Basket :", encryptedBasketIdent);
         setBasketIdent(encryptedBasketIdent);
-        console.log("Basket set");
 
         if (!isAuthentificated) {
-          console.log(
-            "Utilisateur non authentifié. Redirection vers le lien d'authentification..."
-          );
           const authLink = await getAuthLink(data?.ident, window.location.href);
           if (authLink) {
             window.location.assign(authLink);
@@ -104,23 +91,15 @@ export const handleAddButton = async (
       window.location.assign(authLink);
     }
   } else {
-    console.log("Cookie existant détecté :", basketIdent);
-
     try {
       const newBasket = await addPackageToBasket(script);
       setBasket(newBasket);
-      console.log("Article ajouté au panier existant.");
+      showNotification("success", "Article ajouté au panier existant.");
     } catch (e) {
       console.error("Erreur lors de l'ajout au panier :", e.message);
     }
   }
 };
-
-function removeParamFromURL(param, url) {
-  const urlObj = new URL(url);
-  urlObj.searchParams.delete(param);
-  return urlObj.toString(); // Retourne l'URL mise à jour
-}
 
 export const disconnectSession = (
   setBasket,
@@ -131,5 +110,52 @@ export const disconnectSession = (
   setIsAuthentificated(false);
   Cookies.remove("basketIdent");
   setBasketIdent("");
+  showNotification("success", "Successfully disconnected");
   window.location.assign("/");
+};
+
+let currentNotification = null;
+
+export const showNotification = (type, text) => {
+  if (currentNotification) {
+    currentNotification.classList.remove("show");
+    currentNotification.classList.add("hide");
+
+    setTimeout(() => {
+      currentNotification.remove();
+    }, 500);
+  }
+
+  const notification = document.createElement("div");
+  notification.classList.add("notification");
+
+  if (type === "error") {
+    notification.classList.add("error");
+    notification.style.borderColor = "rgb(220, 38, 38)";
+    notification.style.color = "rgb(220, 38, 38)";
+  } else if (type === "success") {
+    notification.classList.add("success");
+    notification.style.borderColor = "rgb(101, 163, 13)";
+    notification.style.color = "rgb(101, 163, 13)";
+  }
+
+  notification.textContent = text;
+
+  document.body.appendChild(notification);
+
+  currentNotification = notification;
+
+  setTimeout(() => {
+    notification.classList.add("show");
+  }, 10);
+
+  setTimeout(() => {
+    notification.classList.remove("show");
+    notification.classList.add("hide");
+
+    setTimeout(() => {
+      notification.remove();
+      currentNotification = null;
+    }, 500);
+  }, 3000);
 };

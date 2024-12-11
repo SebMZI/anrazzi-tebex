@@ -29,7 +29,6 @@ const StoreCollections = () => {
     const data = await response.json();
     if (data) {
       setCategoriesData(data.data);
-      console.log(data.data);
       setIsLoading(false);
     }
   }
@@ -50,7 +49,7 @@ const StoreCollections = () => {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has("success")) {
         setIsAuthentificated(urlParams.get("success"));
-        console.log("success", urlParams.get("success"));
+        showNotification("success", "Successfully connected");
       }
     }
 

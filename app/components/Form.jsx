@@ -51,7 +51,6 @@ const Form = () => {
           publicKey: process.env.NEXT_PUBLIC_EMAILJS,
         }
       );
-      console.log(response.status);
       if (response.status === 200) {
         setSendMsg({ type: "success", msg: "Message successfully sent!" });
         sessionStorage.setItem("messageSent", "true");

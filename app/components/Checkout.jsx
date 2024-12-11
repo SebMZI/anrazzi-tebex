@@ -27,7 +27,6 @@ const Checkout = ({
     }
     const Tebex = (await import("@tebexio/tebex.js")).default;
 
-    console.log("Here", Tebex);
     Tebex.checkout.init({
       ident: decryptCookie(),
       locale: "en_US",
@@ -35,7 +34,7 @@ const Checkout = ({
     });
     Tebex.checkout.launch();
     Tebex.checkout.on("payment:complete", async (event) => {
-      console.log("Payment completed!", event);
+      showNotification("success", "Thank you for your purchase");
       setBasket({});
       Cookies.remove("basketIdent");
       setBasketIdent("");

@@ -6,7 +6,11 @@
 - ✔ Favicon
 - ✔ Page Not found
 - ✔ Metadata
+- ✔ Référencement 
+- ✔ SEO
+- ✔ Microsoft Clarity
+- ✔ Google Search Console
 - Ajouter des notifications quand on ajoute un item au panier, quand on ajoute un coupons, quand on retire un coupon, quand on retire un item
 - Faire responsive tablette et télépone
-- Référencement 
-- SEO
+- Détecter les différents bugs
+- Tests intégrations ?

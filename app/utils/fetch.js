@@ -69,8 +69,11 @@ export const addPackageToBasket = async function (scriptId) {
       }
     );
     const data = await response.json();
+
+    showNotification("success", "Item successfully added");
     return data.data;
   } catch (e) {
+    showNotification("error", "Failed to add the item");
     throw new Error(`Error: ${e.message || "Unknown error"}`);
   }
 };
@@ -88,9 +91,10 @@ export const removePackageToBasket = async function (scriptId) {
       }
     );
     const data = await response.json();
-    console.log(data);
+    showNotification("success", "Item successfully removed");
     return data.data;
   } catch (e) {
+    showNotification("error", "Failed to remove the item");
     throw new Error(`Error: ${e.message || "Unknown error"}`);
   }
 };
@@ -112,9 +116,10 @@ export const addCouponToBasket = async function (couponCode) {
     const data = await response.json();
 
     if (!data.success) {
+      showNotification("error", "Failed to add Coupon");
       throw new Error(data.message);
     }
-
+    showNotification("success", "Coupon added successfully");
     try {
       const basket = await fetchBasket(decryptCookie());
       return basket;
@@ -122,6 +127,7 @@ export const addCouponToBasket = async function (couponCode) {
       throw new Error(`Error: ${e.message || "Unknown error"}`);
     }
   } catch (e) {
+    showNotification("error", "Failed to add Coupon");
     throw new Error(`Error: ${e.message || "Unknown error"}`);
   }
 };
@@ -149,8 +155,7 @@ export const removeCouponFromBasket = async function (coupon) {
     }
 
     const data = await response.json();
-    console.log("Response Data:", data);
-
+    
     if (!data.success) {
       throw new Error(data.message || "Unknown API error");
     }
