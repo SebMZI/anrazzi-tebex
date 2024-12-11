@@ -92,7 +92,6 @@ export const handleAddButton = async (
     try {
       const newBasket = await addPackageToBasket(script);
       setBasket(newBasket);
-      showNotification("success", "Article ajouté au panier existant.");
     } catch (e) {
       console.error("Erreur lors de l'ajout au panier :", e.message);
     }

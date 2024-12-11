@@ -69,6 +69,10 @@ export const addPackageToBasket = async function (scriptId) {
       }
     );
     const data = await response.json();
+    if (data.status !== 200) {
+      showNotification("error", "Failed to add the item");
+      return;
+    }
 
     showNotification("success", "Item successfully added");
     return data.data;
@@ -155,7 +159,7 @@ export const removeCouponFromBasket = async function (coupon) {
     }
 
     const data = await response.json();
-    
+
     if (!data.success) {
       throw new Error(data.message || "Unknown API error");
     }

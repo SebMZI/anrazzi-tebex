@@ -30,15 +30,6 @@ const BasketContent = () => {
     setBasket(newBasket);
   }
 
-  async function addCoupon() {
-    if (!coupon) return;
-    setBasketCoupon(coupon);
-    const newBasket = await addCouponToBasket(coupon);
-    setBasketCoupon(newBasket.coupons[0].code);
-    setCoupon("");
-    setBasket(newBasket);
-  }
-
   return (
     <section id="basketcontent" className="py-[4.5rem] sm:py-[8.5rem]">
       <div className="max-w-screen-xl mx-auto flex flex-col justify-start items-start gap-10 sm:gap-16 px-5">

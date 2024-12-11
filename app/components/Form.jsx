@@ -159,7 +159,7 @@ const Form = () => {
             ></textarea>
           </div>
 
-          <div className="flex justify-between items-center w-full">
+          <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row justify-between items-center w-full">
             <div className="flex-1">
               {sendMsg?.msg?.length > 0 && (
                 <p

@@ -1,8 +1,12 @@
 "use client";
 import Button from "./Button";
-import { createNewBasket, decryptCookie, showNotification } from "../utils/functions";
+import {
+  createNewBasket,
+  decryptCookie,
+  showNotification,
+} from "../utils/functions";
 import Cookies from "js-cookie";
-import { removeCouponFromBasket } from "../utils/fetch";
+import { addCouponToBasket, removeCouponFromBasket } from "../utils/fetch";
 const Checkout = ({
   isAuthentificated,
   setIsAuthentificated,
@@ -14,6 +18,15 @@ const Checkout = ({
   coupon,
   basket,
 }) => {
+  async function addCoupon() {
+    if (!coupon) return;
+    setBasketCoupon(coupon);
+    const newBasket = await addCouponToBasket(coupon);
+    setBasketCoupon(newBasket.coupons[0].code);
+    setCoupon("");
+    setBasket(newBasket);
+  }
+
   async function handleRemoveCoupon() {
     const newBasket = await removeCouponFromBasket(basketCoupon);
     setBasket(newBasket);

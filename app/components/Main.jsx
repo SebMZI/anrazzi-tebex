@@ -55,7 +55,7 @@ const Main = () => {
         />
       </section>
       <section id="main-benefits" className="bg-light-black ">
-        <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center w-full py-28 px-5 gap-20 sm:gap-0">
+        <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row justify-between items-center w-full py-28 px-5 gap-20 lg:gap-0">
           <Benefit title={"Simple"} subtitle={"Installation"} />
           <Benefit title={"Dedicated"} subtitle={"Support"} />
           <Benefit title={"Regular"} subtitle={"Updates"} />
