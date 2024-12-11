@@ -3,3 +3,4 @@
 - ✔ Ajouter déconnexion (suppression du cookie basketIdent, vider context)
 - Faire responsive tablette et télépone
 - Ajouter des notifications quand on ajoute un item au panier, quand on ajoute un coupons, quand on retire un coupon, quand on retire un item
+- Favicon

@@ -102,7 +102,7 @@ const BasketContent = () => {
         ) : (
           <div className="w-full grid place-content-center">
             <p className="text-xl">
-              It seems that you haven't added anything...
+              It seems that you haven`&lsquo;t added anything...
             </p>
           </div>
         )}
