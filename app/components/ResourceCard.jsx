@@ -1,11 +1,22 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { basketContext } from "@/app/layout";
 import Button from "./Button";
 import ScriptModal from "./ScriptModal";
 import { createPortal } from "react-dom";
+import { handleAddButton } from "../utils/functions";
 
 const ResourceCard = ({ resource }) => {
+  const {
+    basket,
+    setBasket,
+
+    isAuthentificated,
+    setIsAuthentificated,
+    basketIdent,
+    setBasketIdent,
+  } = useContext(basketContext);
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -40,7 +51,18 @@ const ResourceCard = ({ resource }) => {
       </div>
       <div className="flex justify-between items-center">
         <p className="text-xl font-medium">{resource?.base_price} €</p>
-        <Button link="" text={"Buy"} action={() => {}} />
+        <Button
+          link=""
+          text={"Buy"}
+          action={() =>
+            handleAddButton(
+              isAuthentificated,
+              setBasketIdent,
+              setBasket,
+              resource?.id
+            )
+          }
+        />
       </div>
     </article>
   );

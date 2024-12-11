@@ -4,7 +4,7 @@ import Button from "./Button";
 
 export const StoreHero = () => {
   return (
-    <section id="store-hero" className=" py-[8.5rem] relative">
+    <section id="store-hero" className=" py-[8.5rem] px-5 relative">
       <div className="max-w-screen-xl mx-auto relative z-10">
         <div className="text-center mb-10">
           <h1 className="font-bold text-left text-[4rem] mb-4 leading-none">

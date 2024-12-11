@@ -1,0 +1,3 @@
+- ✔ Vérifier champs formulaire avant envoie
+- ✔ Réaliser page basket
+- Ajouter déconnexion (suppression du cookie basketIdent, vider context)

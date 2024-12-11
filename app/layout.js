@@ -15,22 +15,13 @@ export default function RootLayout({ children }) {
   const [isAuthentificated, setIsAuthentificated] = useState(false);
   const [basketIdent, setBasketIdent] = useState("");
 
-  const addItemToBasket = (item) => {
-    setBasket((prevBasket) => [...prevBasket, item]);
-  };
-
-  const removeItemFromBasket = (itemId) => {
-    setBasket((prevBasket) => prevBasket.filter((item) => item.id !== itemId));
-  };
-
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`font-uber bg-background antialiased`}>
         <basketContext.Provider
           value={{
             basket,
-            addItemToBasket,
-            removeItemFromBasket,
+            setBasket,
             isAuthentificated,
             setIsAuthentificated,
             basketIdent,

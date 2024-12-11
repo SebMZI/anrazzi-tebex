@@ -34,6 +34,14 @@ const Form = () => {
       return;
     }
 
+    const inputs = form.current.elements;
+    for (let input of inputs) {
+      if (input.name && !input.value.trim()) {
+        setSendMsg({ type: "error", msg: "All fields are required!" });
+        return;
+      }
+    }
+
     try {
       const response = await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
@@ -88,7 +96,7 @@ const Form = () => {
         >
           <div className="flex justify-between w-full gap-14">
             <div className="flex flex-col items-start gap-1 w-full">
-              <label htmlFor="username" className="text-2xl">
+              <label htmlFor="username" className="text-2xl font-medium">
                 Your username
               </label>
               <input

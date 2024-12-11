@@ -1,9 +1,20 @@
-import React, { useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { basketContext } from "@/app/layout";
+import { createBasket, fetchBasket, getAuthLink } from "../utils/fetch";
+import { decryptCookie } from "../utils/functions";
 import ResourceCard from "./ResourceCard";
 
 const StoreCollections = () => {
   const [categoriesData, setCategoriesData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const {
+    basket,
+    setBasket,
+    isAuthentificated,
+    setIsAuthentificated,
+    basketIdent,
+    setBasketIdent,
+  } = useContext(basketContext);
 
   async function fetchCat() {
     setIsLoading(true);
@@ -21,8 +32,28 @@ const StoreCollections = () => {
       setIsLoading(false);
     }
   }
+
+  async function getBasket(basketIndent) {
+    try {
+      const basket = await fetchBasket(basketIndent);
+      if (basket) {
+        setBasket(basket);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
   useEffect(() => {
     fetchCat();
+    if (!isAuthentificated) {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has("success")) {
+        setIsAuthentificated(urlParams.get("success"));
+        console.log("success", urlParams.get("success"));
+      }
+    }
+
+    getBasket(decryptCookie());
   }, []);
 
   return (

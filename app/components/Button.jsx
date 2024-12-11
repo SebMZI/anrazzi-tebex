@@ -4,7 +4,7 @@ import Link from "next/link";
 const Button = ({ text, link = "", type = "", action = () => {} }) => {
   return (
     <button
-      className="bg-ascent py-3 px-6 rounded-md z-10 text-black"
+      className="bg-ascent w-full sm:w-auto py-3 px-6 rounded-md z-10 text-black"
       type={type}
     >
       {link.length > 0 ? (

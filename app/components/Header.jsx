@@ -1,10 +1,19 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { basketContext } from "@/app/layout";
 
 const Header = () => {
+  const {
+    basket,
+    setBasket,
+    isAuthentificated,
+    setIsAuthentificated,
+    basketIdent,
+    setBasketIdent,
+  } = useContext(basketContext);
   const pathname = usePathname();
 
   const [theme, setTheme] = useState("light");
@@ -25,7 +34,7 @@ const Header = () => {
     return () => mediaQueryList.removeEventListener("change", updateTheme);
   }, []);
 
-  console.log(theme);
+  console.log("Basket", basket);
 
   return (
     <header className="py-10 border-b-[1px] border-b-[rgba(255,255,255,0.5)]">
@@ -73,14 +82,16 @@ const Header = () => {
               height="26"
             />
           </Link>
-          <Link href="/">
+          {basket?.length < 1 ? (
             <Image
               src="/images/icon-user.png"
               alt="User Icon"
               width="25"
               height="26"
             />
-          </Link>
+          ) : (
+            <p>{basket?.username}</p>
+          )}
         </div>
       </div>
     </header>
