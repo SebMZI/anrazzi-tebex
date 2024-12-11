@@ -3,10 +3,10 @@
 - ✔ Ajouter déconnexion (suppression du cookie basketIdent, vider context)
 - ✔ Désactiver le panier si user pas connecté
 - ✔ Supprimer cookie 1 heure après sa création
-- Faire responsive tablette et télépone
-- Ajouter des notifications quand on ajoute un item au panier, quand on ajoute un coupons, quand on retire un coupon, quand on retire un item
 - ✔ Favicon
-- Page Not found
+- ✔ Page Not found
 - ✔ Metadata
+- Ajouter des notifications quand on ajoute un item au panier, quand on ajoute un coupons, quand on retire un coupon, quand on retire un item
+- Faire responsive tablette et télépone
 - Référencement 
 - SEO
