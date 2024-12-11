@@ -4,3 +4,8 @@
 - Faire responsive tablette et télépone
 - Ajouter des notifications quand on ajoute un item au panier, quand on ajoute un coupons, quand on retire un coupon, quand on retire un item
 - Favicon
+- Page Not found
+- Metadata
+- Référencement 
+- SEO
+- Désactiver le panier si user pas connecté

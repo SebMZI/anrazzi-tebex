@@ -63,23 +63,22 @@ export const handleAddButton = async (
 ) => {
   const basketIdent = decryptCookie();
 
-  if (!basketIdent) {
-    // Si le cookie n'existe pas ou est invalide
+  if (basketIdent === null) {
     console.log("Cookie manquant ou invalide. Création d'un nouveau panier...");
 
     try {
       const data = await createBasket();
       if (data?.ident) {
-        console.log("Nouveau panier créé avec identifiant :", data.ident);
+        console.log("Nouveau panier créé avec identifiant :", data?.ident);
 
-        const encryptedBasketIdent = encryptCookie(data.ident);
+        const encryptedBasketIdent = encryptCookie(data?.ident);
         setBasketIdent(encryptedBasketIdent);
 
         if (!isAuthentificated) {
           console.log(
             "Utilisateur non authentifié. Redirection vers le lien d'authentification..."
           );
-          const authLink = await getAuthLink(data.ident, window.location.href);
+          const authLink = await getAuthLink(data?.ident, window.location.href);
           if (authLink) {
             window.location.assign(authLink);
           }
