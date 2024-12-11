@@ -3,9 +3,10 @@ import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 
 const encryptCookie = (data) => {
+  console.log("Data", data);
   if (data === undefined || data === null) {
     console.error("Données à chiffrer invalides:", data);
-    return null; // Retourne null si les données sont invalides
+    return null;
   }
 
   const encryptedData = CryptoJS.AES.encrypt(
@@ -95,7 +96,7 @@ export const handleAddButton = async (
         console.error("L'API createBasket n'a pas retourné de valeur valide.");
       }
     } catch (error) {
-      console.error("Erreur lors de la création du panier :", error.message);
+      console.error("Erreur lors de la création du panier S :", error.message);
     }
   } else {
     console.log("Cookie existant détecté :", basketIdent);
