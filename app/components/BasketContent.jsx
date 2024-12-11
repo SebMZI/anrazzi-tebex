@@ -10,9 +10,14 @@ import {
 } from "../utils/fetch";
 import { createNewBasket, decryptCookie } from "../utils/functions";
 import { basketContext } from "../layout";
-import Tebex from "@tebexio/tebex.js";
+// import Tebex from "@tebexio/tebex.js";
 
 const BasketContent = () => {
+  const TebexCheckout = dynamic(() => import("@tebexio/tebex.js"), {
+    ssr: false, // Empêche le rendu côté serveur
+  });
+
+  console.log("Tebex", TebexCheckout);
   const {
     basket,
     setBasket,
@@ -45,21 +50,21 @@ const BasketContent = () => {
   }
 
   function directToCheckout() {
-    console.log(Tebex);
-    Tebex.checkout.init({
-      ident: decryptCookie(),
-      locale: "en_US",
-      theme: "auto",
-    });
-    Tebex.checkout.launch();
-    Tebex.checkout.on("payment:complete", async (event) => {
-      console.log("Payment completed!", event);
-      setBasket({});
-      Cookies.remove("basketIdent");
-      setBasketIdent("");
-      setIsAuthentificated(false);
-      createNewBasket(isAuthentificated, setBasketIdent);
-    });
+    // console.log(Tebex);
+    // Tebex.checkout.init({
+    //   ident: decryptCookie(),
+    //   locale: "en_US",
+    //   theme: "auto",
+    // });
+    // Tebex.checkout.launch();
+    // Tebex.checkout.on("payment:complete", async (event) => {
+    //   console.log("Payment completed!", event);
+    //   setBasket({});
+    //   Cookies.remove("basketIdent");
+    //   setBasketIdent("");
+    //   setIsAuthentificated(false);
+    //   createNewBasket(isAuthentificated, setBasketIdent);
+    // });
   }
 
   return (
