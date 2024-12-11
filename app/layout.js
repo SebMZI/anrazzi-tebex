@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 export const basketContext = createContext();
@@ -40,6 +41,8 @@ export default function RootLayout({ children }) {
         ></script>
         {/* Vercel Analytics */}
         <Analytics />
+        {/* Vercel Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );
