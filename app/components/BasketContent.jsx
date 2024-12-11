@@ -52,13 +52,17 @@ const BasketContent = () => {
   }
 
   function directToCheckout() {
-    Tebex.checkout.init({
+    if (typeof window.Tebex === "undefined") {
+      console.error("Tebex n'est pas encore chargé.");
+      return;
+    }
+    window.Tebex.checkout.init({
       ident: decryptCookie(),
       locale: "en_US",
       theme: "auto",
     });
-    Tebex.checkout.launch();
-    Tebex.checkout.on("payment:complete", async (event) => {
+    window.Tebex.checkout.launch();
+    window.Tebex.checkout.on("payment:complete", async (event) => {
       console.log("Payment completed!", event);
       setBasket({});
       Cookies.remove("basketIdent");
