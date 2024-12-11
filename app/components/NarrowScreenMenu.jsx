@@ -88,7 +88,9 @@ const NarrowScreenMenu = ({
         </nav>
         <div
           className={`${
-            menuOpen ? "flex  flex-col justify-center gap-5" : "hidden"
+            menuOpen
+              ? "flex  flex-col justify-center items-center gap-5"
+              : "hidden"
           }`}
         >
           {basket?.ident ? (
