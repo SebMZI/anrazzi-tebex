@@ -2,6 +2,7 @@
 import { createContext, useState } from "react";
 import localFont from "next/font/local";
 import "./globals.css";
+import Script from "next/script";
 
 // export const metadata = {
 //   title: "Anrazzi",

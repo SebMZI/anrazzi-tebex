@@ -45,6 +45,7 @@ const BasketContent = () => {
   }
 
   function directToCheckout() {
+    console.log(Tebex);
     Tebex.checkout.init({
       ident: decryptCookie(),
       locale: "en_US",
