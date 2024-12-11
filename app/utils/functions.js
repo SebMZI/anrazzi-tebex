@@ -3,16 +3,23 @@ import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 
 const encryptCookie = (data) => {
+  if (data === undefined || data === null) {
+    console.error("Données à chiffrer invalides:", data);
+    return null; // Retourne null si les données sont invalides
+  }
+
   const encryptedData = CryptoJS.AES.encrypt(
     data,
     process.env.NEXT_PUBLIC_SECRET_KEY
   ).toString();
+
   Cookies.set("basketIdent", encryptedData, {
     path: "/",
     secure: true,
     expires: 1,
     sameSite: "Strict",
   });
+
   return encryptedData;
 };
 
