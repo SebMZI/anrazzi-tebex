@@ -19,8 +19,22 @@ const ResourceCard = ({ resource }) => {
   } = useContext(basketContext);
   const [showModal, setShowModal] = useState(false);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: resource?.name,
+    image: resource?.image,
+    description: resource?.description,
+    priceCurrency: "EUR",
+    price: resource?.base_price,
+  };
+
   return (
     <article className="border-[1px] border-border-light rounded-md p-5 max-w-[270px] w-[270px] flex flex-col gap-5">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Image
         src={resource?.image}
         alt={resource?.name}

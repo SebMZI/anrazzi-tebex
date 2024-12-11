@@ -9,6 +9,29 @@ import Form from "./Form";
 const Main = () => {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Anrazzo - Home",
+            description:
+              "Anrazzi offers premium FiveM scripts, custom resources, and high-quality GTA 5 mods for an enhanced gaming experience. Explore exclusive content, mods, and resources to elevate your GTA 5 roleplay with top-tier FiveM scripts and customizations.",
+            url: "https://anrazzi.fr",
+            mainEntityOfPage: "https://anrazzi.fr",
+            image: "/images/anrazzi-opengraph.webp",
+            publisher: {
+              "@type": "Organization",
+              name: "Anrazzi - Territa",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://anrazzi.fr/images/anrazzi-logo.png",
+              },
+            },
+          }),
+        }}
+      ></script>
       <section
         id="main-hero"
         className="flex flex-col justify-center items-center py-[11.25rem] relative"
