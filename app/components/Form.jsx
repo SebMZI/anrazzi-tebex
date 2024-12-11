@@ -83,18 +83,18 @@ const Form = () => {
         height="645"
         className="absolute inset-0 object-cover w-full h-full"
       />
-      <div className="max-w-screen-xl mx-auto py-28 z-10 relative">
-        <h2 className="font-medium text-5xl text-left w-full max-w-3xl">
+      <div className="sm:max-w-screen-xl mx-auto py-28 z-10 relative px-5">
+        <h2 className="font-medium text-4xl sm:text-5xl text-left w-full max-w-3xl">
           Let’s build an Unique Script together!
         </h2>
         <form
           ref={form}
           onSubmit={handleSubmit}
           id="main-form"
-          className="flex flex-col items-end w-2/4 mt-20 gap-9"
+          className="flex flex-col items-end w-full sm:w-2/4 mt-20 gap-9"
         >
-          <div className="flex justify-between w-full gap-14">
-            <div className="flex flex-col items-start gap-1 w-full">
+          <div className="flex justify-between w-full gap-5 sm:gap-14">
+            <div className="flex flex-col justify-between sm:justify-normal items-start gap-1 w-full">
               <label htmlFor="username" className="text-2xl font-medium">
                 Your username
               </label>
@@ -106,7 +106,7 @@ const Form = () => {
                 className="bg-transparent border-b-[1px] border-white-custom py-2 px-1 w-full outline-none text-white-custom"
               />
             </div>
-            <div className="flex flex-col items-start gap-1 w-full">
+            <div className="flex flex-col justify-between sm:justify-normal items-start gap-1 w-full">
               <label htmlFor="discord" className="text-2xl font-medium">
                 Your discord
               </label>
@@ -119,8 +119,8 @@ const Form = () => {
               />
             </div>
           </div>
-          <div className="flex justify-between w-full gap-14">
-            <div className="flex flex-col items-start gap-1 w-full">
+          <div className="flex justify-between w-full gap-5 sm:gap-14">
+            <div className="flex flex-col justify-between sm:justify-normal items-start gap-1 w-full">
               <label htmlFor="server" className="text-2xl font-medium">
                 Your server
               </label>
@@ -132,7 +132,7 @@ const Form = () => {
                 className="bg-transparent border-b-[1px] border-white-custom py-2 px-1 w-full outline-none text-white-custom"
               />
             </div>
-            <div className="flex flex-col items-start gap-1 w-full">
+            <div className="flex flex-col justify-between sm:justify-normal items-start gap-1 w-full">
               <label htmlFor="discord" className="text-2xl font-medium">
                 Budget
               </label>

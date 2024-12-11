@@ -34,14 +34,14 @@ const Main = () => {
       ></script>
       <section
         id="main-hero"
-        className="flex flex-col justify-center items-center py-[11.25rem] relative"
+        className="flex flex-col justify-center items-center py-[11.25rem] px-5 relative"
       >
         <div className="text-center mb-12 z-10">
-          <h1 className="font-bold text-center text-[4rem] max-w-4xl mb-4 leading-tight">
+          <h1 className="font-bold text-center text-5xl sm:text-[4rem] max-w-4xl mb-4 leading-tight">
             Level Up Your <span className="text-ascent">FiveM</span> Server with
             Our Scripts
           </h1>
-          <h2 className="text-xl">
+          <h2 className="text-lg sm:text-xl">
             Handcrafted NUI Scripts and More for a Seamless Experience.
           </h2>
         </div>
@@ -55,7 +55,7 @@ const Main = () => {
         />
       </section>
       <section id="main-benefits" className="bg-light-black ">
-        <div className="max-w-screen-xl mx-auto flex justify-between items-center w-full py-28">
+        <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center w-full py-28 px-5 gap-20 sm:gap-0">
           <Benefit title={"Simple"} subtitle={"Installation"} />
           <Benefit title={"Dedicated"} subtitle={"Support"} />
           <Benefit title={"Regular"} subtitle={"Updates"} />
@@ -92,11 +92,11 @@ const Main = () => {
         </div>
       </section> */}
       <section id="faq">
-        <div className="max-w-screen-xl mx-auto flex flex-col justify-between items-center w-full py-28 gap-12">
-          <h2 className="font-medium text-5xl text-left w-full">
+        <div className="max-w-screen-xl mx-auto flex flex-col justify-between items-center w-full py-28 gap-12 px-5">
+          <h2 className="font-medium text-4xl sm:text-5xl text-left w-full">
             Frequently Asked Questions
           </h2>
-          <div className="flex justify-between items-start gap-10 w-full">
+          <div className="flex flex-col sm:flex-row justify-between items-start gap-5 sm:gap-10 w-full">
             <Question
               title={"How can I get support ?"}
               text={
@@ -118,9 +118,9 @@ const Main = () => {
           </div>
         </div>
       </section>
-      <section id="cta" className="bg-light-black">
+      <section id="cta" className="bg-light-black px-5">
         <div className="max-w-screen-xl py-28 mx-auto">
-          <h2 className="text-[3.5rem] font-bold text-left max-w-4xl leading-tight mb-10 text-white-custom">
+          <h2 className=" text-4xl sm:text-[3.5rem] font-bold text-left max-w-4xl leading-tight mb-10 text-white-custom">
             Turn your server into a <span className="text-ascent">massive</span>{" "}
             success
           </h2>
