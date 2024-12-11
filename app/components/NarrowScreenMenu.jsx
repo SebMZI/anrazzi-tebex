@@ -72,10 +72,16 @@ const NarrowScreenMenu = ({
       >
         <nav className={`${menuOpen ? "block mb-5" : "hidden"}`}>
           <ul className="flex flex-col justify-center items-center gap-5 text-xl">
-            <li className={`py-4 px-10 `}>
+            <li
+              className={`py-4 px-10 `}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
               <Link href="/">Home</Link>
             </li>
-            <li className={`py-4 px-10 `}>
+            <li
+              className={`py-4 px-10 `}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
               <Link href="/store">Store</Link>
             </li>
           </ul>
@@ -86,7 +92,11 @@ const NarrowScreenMenu = ({
           }`}
         >
           {basket?.ident ? (
-            <Link href="/basket" className="relative py-4 px-10">
+            <Link
+              href="/basket"
+              className="relative py-4 px-10"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
               <Image
                 src={`${
                   theme === "light"
@@ -102,7 +112,7 @@ const NarrowScreenMenu = ({
               )}
             </Link>
           ) : (
-            <div className="py-4 px-10">
+            <div className="py-4 px-10" onClick={() => setMenuOpen(!menuOpen)}>
               <Image
                 src={`${
                   theme === "light"
@@ -117,7 +127,7 @@ const NarrowScreenMenu = ({
           )}
 
           {basket?.length < 1 ? (
-            <div className="py-4 px-10">
+            <div className="py-4 px-10" onClick={() => setMenuOpen(!menuOpen)}>
               <Image
                 src={`${
                   theme === "light"
@@ -133,7 +143,10 @@ const NarrowScreenMenu = ({
             <p
               className="cursor-pointer hover:underline py-4 px-10"
               title="Disconnect"
-              onClick={() => handleDisconnect()}
+              onClick={() => {
+                handleDisconnect();
+                setMenuOpen(!menuOpen);
+              }}
             >
               {basket?.username}
             </p>
