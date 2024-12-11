@@ -10,15 +10,10 @@ import {
 } from "../utils/fetch";
 import { createNewBasket, decryptCookie } from "../utils/functions";
 import { basketContext } from "../layout";
-import dynamic from "next/dynamic";
-// import Tebex from "@tebexio/tebex.js";
+
+import Checkout from "./Checkout";
 
 const BasketContent = () => {
-  const TebexCheckout = dynamic(() => import("@tebexio/tebex.js"), {
-    ssr: false, // Empêche le rendu côté serveur
-  });
-
-  console.log("Tebex", TebexCheckout);
   const {
     basket,
     setBasket,
@@ -50,24 +45,24 @@ const BasketContent = () => {
     setBasketCoupon("");
   }
 
-  function directToCheckout() {
-    if (TebexCheckout) {
-      console.log("Here", TebexCheckout.checkout);
-      TebexCheckout.checkout.init({
-        ident: decryptCookie(),
-        locale: "en_US",
-        theme: "auto",
-      });
-      TebexCheckout.checkout.launch();
-      TebexCheckout.checkout.on("payment:complete", async (event) => {
-        console.log("Payment completed!", event);
-        setBasket({});
-        Cookies.remove("basketIdent");
-        setBasketIdent("");
-        setIsAuthentificated(false);
-        createNewBasket(isAuthentificated, setBasketIdent);
-      });
-    }
+  async function directToCheckout() {
+    const Tebex = (await import("@tebexio/tebex.js")).default;
+
+    console.log("Here", Tebex);
+    Tebex.checkout.init({
+      ident: decryptCookie(),
+      locale: "en_US",
+      theme: "auto",
+    });
+    Tebex.checkout.launch();
+    Tebex.checkout.on("payment:complete", async (event) => {
+      console.log("Payment completed!", event);
+      setBasket({});
+      Cookies.remove("basketIdent");
+      setBasketIdent("");
+      setIsAuthentificated(false);
+      createNewBasket(isAuthentificated, setBasketIdent);
+    });
   }
 
   return (
