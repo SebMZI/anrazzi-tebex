@@ -46,10 +46,10 @@ const BasketContent = () => {
   }
 
   async function directToCheckout() {
-    // if (typeof window === "undefined") {
-    //   console.error("Tebex checkout is only available on the client side.");
-    //   return;
-    // }
+    if (typeof window === "undefined") {
+      console.error("Tebex checkout is only available on the client side.");
+      return;
+    }
     const Tebex = (await import("@tebexio/tebex.js")).default;
 
     console.log("Here", Tebex);
