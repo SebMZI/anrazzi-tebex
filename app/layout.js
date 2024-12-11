@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const basketContext = createContext();
@@ -37,6 +38,8 @@ export default function RootLayout({ children }) {
             })(window, document, "clarity", "script", "pcc5d3kts5");`,
           }}
         ></script>
+        {/* Vercel Analytics */}
+        <Analytics />
       </body>
     </html>
   );
