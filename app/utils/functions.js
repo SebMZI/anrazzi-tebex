@@ -102,3 +102,23 @@ export const handleAddButton = async (
     }
   }
 };
+
+function removeParamFromURL(param, url) {
+  const urlObj = new URL(url);
+  urlObj.searchParams.delete(param);
+  return urlObj.toString(); // Retourne l'URL mise à jour
+}
+
+export const disconnectSession = (
+  setBasket,
+  setBasketIdent,
+  setIsAuthentificated
+) => {
+  setBasket([]);
+  setIsAuthentificated(false);
+  Cookies.remove("basketIdent");
+  setBasketIdent("");
+  const updatedURL = removeParamFromURL("success", window.location.href);
+  window.history.replaceState({}, document.title, updatedURL);
+  window.location.reload();
+};

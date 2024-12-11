@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { basketContext } from "@/app/layout";
+import { disconnectSession } from "../utils/functions";
 
 const Header = () => {
   const {
@@ -34,7 +35,9 @@ const Header = () => {
     return () => mediaQueryList.removeEventListener("change", updateTheme);
   }, []);
 
-  console.log("Basket", basket);
+  function handleDisconnect() {
+    disconnectSession(setBasket, setBasketIdent, setIsAuthentificated);
+  }
 
   return (
     <header className="py-10 border-b-[1px] border-b-[rgba(255,255,255,0.5)]">
@@ -90,7 +93,13 @@ const Header = () => {
               height="26"
             />
           ) : (
-            <p>{basket?.username}</p>
+            <p
+              className="cursor-pointer hover:underline"
+              title="Disconnect"
+              onClick={() => handleDisconnect()}
+            >
+              {basket?.username}
+            </p>
           )}
         </div>
       </div>
