@@ -78,13 +78,16 @@ const Header = () => {
         </nav>
         <div className="flex justify-center gap-4">
           {basket?.ident ? (
-            <Link href="/basket">
+            <Link href="/basket" className="relative">
               <Image
                 src="/images/icon-basket.png"
                 alt="Basket Icon"
                 width="25"
                 height="26"
               />
+              {basket?.packages.length > 0 && (
+                <div className="absolute top-0 right-0 rounded-full bg-ascent opacity-70 h-2 w-2"></div>
+              )}
             </Link>
           ) : (
             <Image
