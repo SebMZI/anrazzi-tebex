@@ -37,7 +37,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="px-5 py-10 border-b-[1px] border-b-[rgba(255,255,255,0.5)]">
+    <header className="px-5 py-10 border-b-[1px] border-b-border-light">
       <div className="max-w-screen-xl mx-auto w-full flex justify-between items-center">
         <div>
           <Link href="/" className="header-link flex items-center">

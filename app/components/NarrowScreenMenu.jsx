@@ -141,7 +141,7 @@ const NarrowScreenMenu = ({
             </div>
           ) : (
             <p
-              className="cursor-pointer hover:underline py-4 px-10"
+              className="cursor-pointer hover:underline py-4 px-10 text-white-custom"
               title="Disconnect"
               onClick={() => {
                 handleDisconnect();
