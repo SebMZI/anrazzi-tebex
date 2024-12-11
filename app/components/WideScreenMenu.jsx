@@ -50,7 +50,11 @@ const WideScreenMenu = ({
         {basket?.ident ? (
           <Link href="/basket" className="relative">
             <Image
-              src="/images/icon-basket.png"
+              src={`${
+                theme === "light"
+                  ? "/images/icon-basket-dark.png"
+                  : "/images/icon-basket.png"
+              }`}
               alt="Basket Icon"
               width="25"
               height="26"
@@ -61,7 +65,11 @@ const WideScreenMenu = ({
           </Link>
         ) : (
           <Image
-            src="/images/icon-basket.png"
+            src={`${
+              theme === "light"
+                ? "/images/icon-basket-dark.png"
+                : "/images/icon-basket.png"
+            }`}
             alt="Basket Icon"
             width="25"
             height="26"
@@ -70,7 +78,11 @@ const WideScreenMenu = ({
 
         {basket?.length < 1 ? (
           <Image
-            src="/images/icon-user.png"
+            src={`${
+              theme === "light"
+                ? "/images/icon-user-dark.png"
+                : "/images/icon-user.png"
+            }`}
             alt="User Icon"
             width="25"
             height="26"

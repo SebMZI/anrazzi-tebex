@@ -88,7 +88,11 @@ const NarrowScreenMenu = ({
           {basket?.ident ? (
             <Link href="/basket" className="relative py-4 px-10">
               <Image
-                src="/images/icon-basket.png"
+                src={`${
+                  theme === "light"
+                    ? "/images/icon-basket-dark.png"
+                    : "/images/icon-basket.png"
+                }`}
                 alt="Basket Icon"
                 width="25"
                 height="26"
@@ -100,7 +104,11 @@ const NarrowScreenMenu = ({
           ) : (
             <div className="py-4 px-10">
               <Image
-                src="/images/icon-basket.png"
+                src={`${
+                  theme === "light"
+                    ? "/images/icon-basket-dark.png"
+                    : "/images/icon-basket.png"
+                }`}
                 alt="Basket Icon"
                 width="25"
                 height="26"
@@ -111,7 +119,11 @@ const NarrowScreenMenu = ({
           {basket?.length < 1 ? (
             <div className="py-4 px-10">
               <Image
-                src="/images/icon-user.png"
+                src={`${
+                  theme === "light"
+                    ? "/images/icon-user-dark.png"
+                    : "/images/icon-user.png"
+                }`}
                 alt="User Icon"
                 width="25"
                 height="26"
