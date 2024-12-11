@@ -8,18 +8,11 @@ import {
   removeCouponFromBasket,
   fetchBasket,
 } from "../utils/fetch";
-// import Tebex from "@tebexio/tebex.js";
 import { createNewBasket, decryptCookie } from "../utils/functions";
 import { basketContext } from "../layout";
+import Tebex from "@tebexio/tebex.js";
 
 const BasketContent = () => {
-  useEffect(() => {
-    const loadTebex = async () => {
-      await import("@tebexio/tebex.js");
-    };
-    loadTebex();
-  }, []);
-
   const {
     basket,
     setBasket,
@@ -52,17 +45,13 @@ const BasketContent = () => {
   }
 
   function directToCheckout() {
-    if (typeof window.Tebex === "undefined") {
-      console.error("Tebex n'est pas encore chargé.");
-      return;
-    }
-    window.Tebex.checkout.init({
+    Tebex.checkout.init({
       ident: decryptCookie(),
       locale: "en_US",
       theme: "auto",
     });
-    window.Tebex.checkout.launch();
-    window.Tebex.checkout.on("payment:complete", async (event) => {
+    Tebex.checkout.launch();
+    Tebex.checkout.on("payment:complete", async (event) => {
       console.log("Payment completed!", event);
       setBasket({});
       Cookies.remove("basketIdent");
@@ -80,7 +69,6 @@ const BasketContent = () => {
         {basket?.packages?.length > 0 ? (
           <div className="w-full flex flex-col gap-3 py-2">
             {basket?.packages?.map((script, i) => {
-              console.log(script.name);
               return (
                 <div
                   key={i}
@@ -162,6 +150,7 @@ const BasketContent = () => {
                   </div>
                 ))}
             </div>
+
             <Button text="Checkout" action={() => directToCheckout()} />
           </div>
         </div>
