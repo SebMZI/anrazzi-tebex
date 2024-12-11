@@ -1,17 +1,17 @@
 "use client";
-import React, { useState, useContext, useEffect } from "react";
-import Cookies from "js-cookie";
-import Button from "./Button";
+import React, { useState, useContext } from "react";
+
 import {
   removePackageToBasket,
   addCouponToBasket,
   removeCouponFromBasket,
   fetchBasket,
 } from "../utils/fetch";
-import { createNewBasket, decryptCookie } from "../utils/functions";
-import { basketContext } from "../layout";
 
-import Checkout from "./Checkout";
+import { basketContext } from "../layout";
+import dynamic from "next/dynamic";
+
+const Checkout = dynamic(() => import("./Checkout"), { ssr: false });
 
 const BasketContent = () => {
   const {
@@ -37,36 +37,6 @@ const BasketContent = () => {
     setBasketCoupon(newBasket.coupons[0].code);
     setCoupon("");
     setBasket(newBasket);
-  }
-
-  async function handleRemoveCoupon() {
-    const newBasket = await removeCouponFromBasket(basketCoupon);
-    setBasket(newBasket);
-    setBasketCoupon("");
-  }
-
-  async function directToCheckout() {
-    if (typeof window === "undefined") {
-      console.error("Tebex checkout is only available on the client side.");
-      return;
-    }
-    const Tebex = (await import("@tebexio/tebex.js")).default;
-
-    console.log("Here", Tebex);
-    Tebex.checkout.init({
-      ident: decryptCookie(),
-      locale: "en_US",
-      theme: "auto",
-    });
-    Tebex.checkout.launch();
-    Tebex.checkout.on("payment:complete", async (event) => {
-      console.log("Payment completed!", event);
-      setBasket({});
-      Cookies.remove("basketIdent");
-      setBasketIdent("");
-      setIsAuthentificated(false);
-      createNewBasket(isAuthentificated, setBasketIdent);
-    });
   }
 
   return (
@@ -128,39 +98,17 @@ const BasketContent = () => {
               <p className="text-xl">{basket?.total_price} €</p>
             </div>
           </div>
-          <div className="w-full flex justify-between items-start flex-wrap sm:flex-nowrap gap-5">
-            <div className="w-full flex flex-col gap-4">
-              <div className="flex justify-between w-full sm:justify-start items-center gap-4">
-                <input
-                  value={coupon}
-                  type="text"
-                  placeholder="JOB10"
-                  onChange={(e) => setCoupon(e.target.value)}
-                  className="bg-transparent inline-block w-full sm:w-auto border-[1px] border-border-light rounded-md py-3 px-6 font-medium text-base outline-none placeholder:text-border-light"
-                />
-                <Button text="Add Coupon" action={() => addCoupon()} />
-              </div>
-              {basket?.coupons?.length > 0 &&
-                basket?.coupons?.map((coupon, i) => (
-                  <div
-                    key={i}
-                    className="rounded-xl text-lg bg-light-black px-3 py-1 w-fit "
-                  >
-                    <p className="inline-block mr-3 opacity-70">
-                      {coupon.code}
-                    </p>
-                    <p
-                      className="text-red-700 inline-block cursor-pointer"
-                      onClick={handleRemoveCoupon}
-                    >
-                      X
-                    </p>
-                  </div>
-                ))}
-            </div>
-
-            <Button text="Checkout" action={() => directToCheckout()} />
-          </div>
+          <Checkout
+            isAuthentificated={isAuthentificated}
+            setIsAuthentificated={setIsAuthentificated}
+            setBasketIdent={setBasketIdent}
+            setCoupon={setCoupon}
+            setBasketCoupon={setBasketCoupon}
+            setBasket={setBasket}
+            basketCoupon={basketCoupon}
+            coupon={coupon}
+            basket={basket}
+          />
         </div>
       </div>
     </section>

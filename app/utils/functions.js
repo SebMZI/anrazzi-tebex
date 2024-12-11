@@ -17,7 +17,7 @@ const encryptCookie = (data) => {
   Cookies.set("basketIdent", encryptedData, {
     path: "/",
     secure: true,
-    expires: 1,
+    expires: 1 / 24,
     sameSite: "Strict",
   });
 
@@ -97,6 +97,11 @@ export const handleAddButton = async (
       }
     } catch (error) {
       console.error("Erreur lors de la création du panier S :", error.message);
+    }
+  } else if (basketIdent && isAuthentificated) {
+    const authLink = await getAuthLink(data?.ident, window.location.href);
+    if (authLink) {
+      window.location.assign(authLink);
     }
   } else {
     console.log("Cookie existant détecté :", basketIdent);

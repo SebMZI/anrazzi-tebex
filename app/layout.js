@@ -1,13 +1,6 @@
 "use client";
 import { createContext, useState } from "react";
-import localFont from "next/font/local";
 import "./globals.css";
-import Script from "next/script";
-
-// export const metadata = {
-//   title: "Anrazzi",
-//   description: "FiveM GTA5 Scripts",
-// };
 
 export const basketContext = createContext();
 

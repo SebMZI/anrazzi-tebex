@@ -1,0 +1,5 @@
+User-agent: *
+Allow: *
+Disallow: /basket
+
+Sitemap: https://anrazzi.fr/sitemap.xml

@@ -77,14 +77,24 @@ const Header = () => {
           </ul>
         </nav>
         <div className="flex justify-center gap-4">
-          <Link href="/basket">
+          {basket?.ident ? (
+            <Link href="/basket">
+              <Image
+                src="/images/icon-basket.png"
+                alt="Basket Icon"
+                width="25"
+                height="26"
+              />
+            </Link>
+          ) : (
             <Image
               src="/images/icon-basket.png"
               alt="Basket Icon"
               width="25"
               height="26"
             />
-          </Link>
+          )}
+
           {basket?.length < 1 ? (
             <Image
               src="/images/icon-user.png"

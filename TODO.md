@@ -1,6 +1,8 @@
 - ✔ Vérifier champs formulaire avant envoie
 - ✔ Réaliser page basket
 - ✔ Ajouter déconnexion (suppression du cookie basketIdent, vider context)
+- ✔ Désactiver le panier si user pas connecté
+- ✔ Supprimer cookie 1 heure après sa création
 - Faire responsive tablette et télépone
 - Ajouter des notifications quand on ajoute un item au panier, quand on ajoute un coupons, quand on retire un coupon, quand on retire un item
 - Favicon
@@ -8,4 +10,3 @@
 - Metadata
 - Référencement 
 - SEO
-- Désactiver le panier si user pas connecté

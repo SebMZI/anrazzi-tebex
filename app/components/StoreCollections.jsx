@@ -1,3 +1,4 @@
+"use client";
 import { useContext, useEffect, useState } from "react";
 import { basketContext } from "@/app/layout";
 import { createBasket, fetchBasket, getAuthLink } from "../utils/fetch";
