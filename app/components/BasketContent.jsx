@@ -51,21 +51,23 @@ const BasketContent = () => {
   }
 
   function directToCheckout() {
-    // console.log(Tebex);
-    // Tebex.checkout.init({
-    //   ident: decryptCookie(),
-    //   locale: "en_US",
-    //   theme: "auto",
-    // });
-    // Tebex.checkout.launch();
-    // Tebex.checkout.on("payment:complete", async (event) => {
-    //   console.log("Payment completed!", event);
-    //   setBasket({});
-    //   Cookies.remove("basketIdent");
-    //   setBasketIdent("");
-    //   setIsAuthentificated(false);
-    //   createNewBasket(isAuthentificated, setBasketIdent);
-    // });
+    if (TebexCheckout) {
+      console.log("Here", TebexCheckout.checkout);
+      TebexCheckout.checkout.init({
+        ident: decryptCookie(),
+        locale: "en_US",
+        theme: "auto",
+      });
+      TebexCheckout.checkout.launch();
+      TebexCheckout.checkout.on("payment:complete", async (event) => {
+        console.log("Payment completed!", event);
+        setBasket({});
+        Cookies.remove("basketIdent");
+        setBasketIdent("");
+        setIsAuthentificated(false);
+        createNewBasket(isAuthentificated, setBasketIdent);
+      });
+    }
   }
 
   return (
