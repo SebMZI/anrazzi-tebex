@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Topbar from "../components/Topbar";
 import Header from "../components/Header";
