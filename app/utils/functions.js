@@ -118,7 +118,5 @@ export const disconnectSession = (
   setIsAuthentificated(false);
   Cookies.remove("basketIdent");
   setBasketIdent("");
-  const updatedURL = removeParamFromURL("success", window.location.href);
-  window.history.replaceState({}, document.title, updatedURL);
-  window.location.reload();
+  window.location.assign("/");
 };
