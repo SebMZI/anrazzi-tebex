@@ -21,6 +21,52 @@ const Main = () => {
             url: "https://anrazzi.fr",
             mainEntityOfPage: "https://anrazzi.fr",
             image: "/images/anrazzi-opengraph.webp",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How can I get support ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "It's simple, join our Discord server and open a ticket, the owner or a moderator will answer you.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I get a custom script ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Of course you can, just reach out to us. You can send a message using the form below or open a ticket on the Discord server.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Are your scripts updated often ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Our scripts are updated when needed. If a bug occurs we'll take care of it. You'll be notified when an fix has been done.",
+                },
+              },
+            ],
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://anrazzi.fr",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Store",
+                item: "https://anrazzi.fr/store",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Basket",
+                item: "https://anrazzi.fr/basket",
+              },
+            ],
             publisher: {
               "@type": "Organization",
               name: "Anrazzi - Territa",
