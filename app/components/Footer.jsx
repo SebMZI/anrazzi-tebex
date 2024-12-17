@@ -1,12 +1,24 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="grid place-content-center py-10 px-5">
+    <footer className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center py-10 px-5 w-full gap-5">
       <p className="text-sm">
         &copy; Copyright 2024 <span className="font-bold">Anrazzi</span>. We do
         not have affiliation with any real world brands.
       </p>
+      <ul className="flex flex-wrap items-center gap-3">
+        <li className="border-b border-border-light">
+          <Link href="/terms/impressum">Impressum</Link>
+        </li>
+        <li className="border-b border-border-light">
+          <Link href="/terms/checkout">Terms & Conditions</Link>
+        </li>
+        <li className="border-b border-border-light">
+          <Link href="/terms/privacy">Privacy Policy</Link>
+        </li>
+      </ul>
     </footer>
   );
 };
