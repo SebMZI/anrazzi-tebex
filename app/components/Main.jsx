@@ -107,6 +107,7 @@ const Main = () => {
           <Benefit title={"Regular"} subtitle={"Updates"} />
         </div>
       </section>
+
       {/* <section id="reviews">
         <div className="max-w-screen-xl mx-auto flex flex-col justify-between items-center w-full py-28 gap-12">
           <h2 className="font-medium text-5xl text-left w-full">Reviews</h2>
@@ -175,6 +176,15 @@ const Main = () => {
       </section>
       <section id="contact" className="relative">
         <Form />
+      </section>
+      <section id="discord" className="bg-light-black px-5">
+        <div className="max-w-screen-xl py-28 mx-auto">
+          <h2 className=" text-4xl sm:text-[3.5rem] font-bold text-left max-w-4xl leading-tight mb-10 text-white-custom">
+            Join Our <span className="text-ascent">Discord</span> to Make Sure
+            You Don&apos;t Miss Anything
+          </h2>
+          <Button text={"Join now"} link="https://discord.gg/AbxHp6xKUV" />
+        </div>
       </section>
     </main>
   );
