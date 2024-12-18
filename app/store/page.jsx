@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import StoreCollections from "../components/StoreCollections";
 
 export const metadata = {
-  title: "Anrazzi | Store",
+  title: "Anrazzi Store | High-Quality FiveM Scripts for GTA 5 Servers",
   description:
     "Discover the latest FiveM scripts, resources, and exclusive deals on Anrazzi, your online store for high-quality GTA 5 custom content.",
 };
