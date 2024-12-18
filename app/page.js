@@ -4,14 +4,16 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 export const metadata = {
-  title: "Anrazzi | Home",
+  title:
+    "Anrazzi - FiveM Scripts for GTA 5 Servers | Premium Resources & Tools",
   description:
-    "Anrazzi offers premium FiveM scripts, custom resources, and high-quality GTA 5 mods for an enhanced gaming experience. Explore exclusive content, mods, and resources to elevate your GTA 5 roleplay with top-tier FiveM scripts and customizations.",
+    "Boost your GTA 5 roleplay server with premium FiveM scripts and custom resources. Explore exclusive tools to enhance your gaming experience today!",
   keywords: ["FiveM", "GTA5", "Scrips", "Fivem Server", "Resources"],
   openGraph: {
-    title: "Anrazzi | Home",
+    title:
+      "Anrazzi - FiveM Scripts for GTA 5 Servers | Premium Resources & Tools",
     description:
-      "Anrazzi offers premium FiveM scripts, custom resources, and high-quality GTA 5 mods for an enhanced gaming experience. Explore exclusive content, mods, and resources to elevate your GTA 5 roleplay with top-tier FiveM scripts and customizations.",
+      "Boost your GTA 5 roleplay server with premium FiveM scripts and custom resources. Explore exclusive tools to enhance your gaming experience today!",
     url: "https://anrazzi.fr",
     siteName: "Anrazzi",
     images: [
