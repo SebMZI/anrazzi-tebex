@@ -1,5 +1,8 @@
 User-agent: *
 Allow: *
 Disallow: /basket
+Disallow: /terms/checkout
+Disallow: /terms/impressum
+Disallow: /terms/privacy
 
 Sitemap: https://anrazzi.fr/sitemap.xml
