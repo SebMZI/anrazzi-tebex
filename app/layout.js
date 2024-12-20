@@ -69,11 +69,10 @@ export default function RootLayout({ children }) {
                 axeptio.on("cookies:complete", function(choices) {                 
                   if(choices.clarity){
                     window.clarity('consent');
-                  }elseif(!choices.clarity){
-                    window.clarity('consent', false)
-                  }
-                  console.log(choices);               
-                })             
+                  } else if(!choices.clarity){  // Corrected here
+                    window.clarity('consent', false);
+                  }            
+                });             
               });             
             `,
           }}
