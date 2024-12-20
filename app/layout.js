@@ -45,14 +45,15 @@ export default function RootLayout({ children }) {
           type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `                       
-              window.axeptioSettings = {               
-                clientId: "676587bd75e639c447bd7f85",               
-                cookiesVersion: "anrazzi-fr-EU",             
-              };                          
-              (function(d, s) {               
-                var t = d.getElementsByTagName(s)[0], e = d.createElement(s);               
-                e.async = true; e.src = "//static.axept.io/sdk.js";               
-                t.parentNode.insertBefore(e, t);             
+              window.axeptioSettings = {
+                clientId: "676587bd75e639c447bd7f85",
+                cookiesVersion: "anrazzi-fr-EU",
+              };
+              
+              (function(d, s) {
+                var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+                e.async = true; e.src = "//static.axept.io/sdk.js";
+                t.parentNode.insertBefore(e, t);
               })(document, "script");             
             `,
           }}
@@ -66,7 +67,11 @@ export default function RootLayout({ children }) {
               void 0 === window._axcb && (window._axcb = []);             
               window._axcb.push(function(axeptio) {               
                 axeptio.on("cookies:complete", function(choices) {                 
-                                  
+                  if(choices.clarity){
+                    window.clarity('consent');
+                  }elseif(!choices.clarity){
+                    window.clarity('consent', false)
+                  }
                   console.log(choices);               
                 })             
               });             
