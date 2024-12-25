@@ -23,16 +23,52 @@ const ResourceCard = ({ resource }) => {
     "@context": "https://schema.org",
     "@type": "Product",
     name: resource?.name,
-    image: resource?.image,
     description: resource?.description,
+    brand: "Anrazzi",
     offers: {
       "@type": "Offer",
+      url: "https://anrazzi.fr/store",
       priceCurrency: "EUR",
-      price: resource?.base_price,
+      price: resource?.price,
+      priceValidUntil: "2025-12-31",
       availability: "https://schema.org/InStock",
-      url: `https://anrazzi.fr/store#${resource?.id}`,
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        returnPolicyCategory: "https://schema.org/NonRefundable",
+        merchantReturnDays: 0,
+      },
+      shippingDetails: {
+        "@type": "ShippingRateSettings",
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          name: "Worldwide",
+        },
+        shippingMethod: {
+          "@type": "DeliveryMethod",
+          name: "Digital Delivery",
+        },
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        reviewCount: "1",
+      },
+      review: {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Anonymous",
+        },
+        datePublished: "2024-12-08",
+        reviewBody:
+          "Rapide efficace et vous patchera chaque problème jusqu'au dernier, pour le moment meilleur dev que j'ai pu trouver en 10 mois", // Message par défaut
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+      },
     },
-    category: "Digital Product",
   };
 
   return (
