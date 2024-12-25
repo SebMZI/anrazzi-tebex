@@ -61,7 +61,7 @@ const ResourceCard = ({ resource }) => {
         },
         datePublished: "2024-12-08",
         reviewBody:
-          "Rapide efficace et vous patchera chaque problème jusqu'au dernier, pour le moment meilleur dev que j'ai pu trouver en 10 mois", // Message par défaut
+          "Rapide, efficace et vous patchera chaque problème jusqu'au dernier, pour le moment le meilleur dev que j'ai pu trouver en 10 mois",
         reviewRating: {
           "@type": "Rating",
           ratingValue: "5",
