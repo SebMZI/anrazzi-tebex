@@ -48,25 +48,25 @@ const ResourceCard = ({ resource }) => {
           name: "Digital Delivery",
         },
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5",
-        reviewCount: "1",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      reviewCount: "1",
+    },
+    review: {
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: "Anonymous",
       },
-      review: {
-        "@type": "Review",
-        author: {
-          "@type": "Person",
-          name: "Anonymous",
-        },
-        datePublished: "2024-12-08",
-        reviewBody:
-          "Rapide, efficace et vous patchera chaque problème jusqu'au dernier, pour le moment le meilleur dev que j'ai pu trouver en 10 mois",
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
-        },
+      datePublished: "2024-12-08",
+      reviewBody:
+        "Rapide, efficace et vous patchera chaque problème jusqu'au dernier, pour le moment le meilleur dev que j'ai pu trouver en 10 mois",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
       },
     },
   };
