@@ -176,3 +176,25 @@ export const removeCouponFromBasket = async function (coupon) {
     throw e;
   }
 };
+
+export const getAllResources = async () => {
+  try {
+    const response = await fetch(
+      `https://headless.tebex.io/api/accounts/${process.env.NEXT_PUBLIC_TEBEX_PUBLIC}/packages`
+    );
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(
+        errorData.message || `Request failed with status ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+    return data.data;
+  } catch (e) {
+    console.error(`Error in getAllResources: ${e.message}`);
+    throw e;
+  }
+};
