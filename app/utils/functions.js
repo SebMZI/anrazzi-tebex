@@ -61,13 +61,14 @@ export const handleAddButton = async (
   isAuthentificated,
   setBasketIdent,
   setBasket,
-  script
+  script,
+  setIsAuthentificated
 ) => {
   const basketIdent = decryptCookie();
-  console.log(basket);
-  if (basketIdent === null) {
+  if (basketIdent === null || basketIdent.length < 1) {
     try {
       const data = await createBasket();
+
       if (data?.ident) {
         const encryptedBasketIdent = encryptCookie(data?.ident);
         setBasketIdent(encryptedBasketIdent);
@@ -85,9 +86,30 @@ export const handleAddButton = async (
       console.error("Erreur lors de la création du panier S :", error.message);
     }
   } else if (basketIdent && !isAuthentificated) {
-    const authLink = await getAuthLink(decryptCookie(), window.location.href);
-    if (authLink) {
-      window.location.assign(authLink);
+    setBasket([]);
+    setIsAuthentificated(false);
+    Cookies.remove("basketIdent");
+    setBasketIdent("");
+
+    try {
+      const data = await createBasket();
+
+      if (data?.ident) {
+        const encryptedBasketIdent = encryptCookie(data?.ident);
+
+        setBasketIdent(encryptedBasketIdent);
+
+        if (!isAuthentificated) {
+          const authLink = await getAuthLink(data?.ident, window.location.href);
+          if (authLink) {
+            window.location.assign(authLink);
+          }
+        }
+      } else {
+        console.error("L'API createBasket n'a pas retourné de valeur valide.");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la création du panier S :", error.message);
     }
   } else {
     try {
@@ -157,3 +179,7 @@ export const showNotification = (type, text) => {
     }, 500);
   }, 3000);
 };
+
+export function roundDedicmal(n) {
+  return +(Math.round(n + "e+2") + "e-2");
+}

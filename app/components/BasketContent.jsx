@@ -7,8 +7,10 @@ import {
   removeCouponFromBasket,
   fetchBasket,
 } from "../utils/fetch";
+import { roundDedicmal } from "../utils/functions";
 
 import { basketContext } from "../layout";
+import content from "@/app/_data/content.json";
 import dynamic from "next/dynamic";
 
 const Checkout = dynamic(() => import("./Checkout"), { ssr: false });
@@ -31,14 +33,14 @@ const BasketContent = () => {
   }
 
   return (
-    <section id="basketcontent" className="py-[4.5rem] sm:py-[8.5rem]">
+    <section id="basketcontent" className="py-[4.5rem] sm:pb-[8.5rem] ">
       <div className="max-w-screen-xl mx-auto flex flex-col justify-start items-start gap-10 sm:gap-16 px-5">
         <h2 className="w-full text-left font-medium text-4xl sm:text-5xl">
           Your cart
         </h2>
 
         {basket?.packages?.length > 0 ? (
-          <div className="w-full flex flex-col gap-3 py-2">
+          <div className="w-full flex flex-col gap-10 py-2">
             {basket?.packages?.map((script, i) => {
               return (
                 <div
@@ -47,14 +49,11 @@ const BasketContent = () => {
                 >
                   <div className="w-full flex flex-col gap-2">
                     <h3 className="font-medium text-ascent text-lg sm:text-xl">
-                      {script.name}
+                      {content[script.id].title}
                     </h3>
-                    <p
-                      className="line-clamp-2 text-ellipsis opacity-70 text-sm sm:text-base"
-                      dangerouslySetInnerHTML={{
-                        __html: script.description,
-                      }}
-                    ></p>
+                    <p className="line-clamp-2 text-ellipsis opacity-70 text-sm sm:text-base">
+                      {content[script.id].subtitle}
+                    </p>
                   </div>
                   <div className="w-3/4 sm:w-full flex justify-end gap-4 text-lg sm:text-xl">
                     <p>{script?.in_basket?.price} €</p>
@@ -72,7 +71,7 @@ const BasketContent = () => {
         ) : (
           <div className="w-full grid place-content-center">
             <p className="text-lg sm:text-xl">
-              It seems that you haven&lsquo;t added anything...
+              It seems that you haven&lsquo;t added anything yet...
             </p>
           </div>
         )}
@@ -82,15 +81,21 @@ const BasketContent = () => {
               <h3 className="font-medium text-lg sm:text-xl">
                 Total without Taxes
               </h3>
-              <p className="text-lg sm:text-xl">{basket?.base_price} €</p>
+              <p className="text-lg sm:text-xl">
+                {roundDedicmal(basket?.base_price) || 0} €
+              </p>
             </div>
             <div className="w-full flex justify-between items-center">
               <h3 className="font-medium text-lg sm:text-xl">Taxes</h3>
-              <p className="text-lg sm:text-xl">{basket?.sales_tax} €</p>
+              <p className="text-lg sm:text-xl">
+                {roundDedicmal(basket?.sales_tax) || 0} €
+              </p>
             </div>
             <div className="w-full flex justify-between items-center">
               <h3 className="font-medium text-lg sm:text-xl">Total</h3>
-              <p className="text-lg sm:text-xl">{basket?.total_price} €</p>
+              <p className="text-lg sm:text-xl">
+                {roundDedicmal(basket?.total_price) || 0} €
+              </p>
             </div>
           </div>
           <Checkout

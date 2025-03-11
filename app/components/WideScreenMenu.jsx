@@ -11,23 +11,6 @@ const WideScreenMenu = ({
   setBasketIdent,
   setIsAuthentificated,
 }) => {
-  const [theme, setTheme] = useState("light");
-  useEffect(() => {
-    const updateTheme = () => {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      setTheme(prefersDark ? "dark" : "light");
-    };
-
-    updateTheme();
-
-    const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
-    mediaQueryList.addEventListener("change", updateTheme);
-
-    return () => mediaQueryList.removeEventListener("change", updateTheme);
-  }, []);
-
   const pathname = usePathname();
 
   function handleDisconnect() {
@@ -37,25 +20,33 @@ const WideScreenMenu = ({
     <>
       <nav className="sm:block hidden">
         <ul className="flex justify-center gap-10">
-          <li className={`py-1 ${pathname == "/" ? "border-b-[1px]" : ""}`}>
+          <li
+            className={`py-1 ${
+              pathname == "/" ? "border-b-[1px] border-ascent" : ""
+            } relative hover:after:scale-x-100 hover:after:origin-left 
+                after:content-[''] after:absolute after:left-0 after:-bottom-[8%] 
+                after:w-full after:origin-right after:scale-x-0 after:h-[2px] 
+                after:transition-transform after:duration-300 after:bg-ascent`}
+          >
             <Link href="/">Home</Link>
           </li>
           <li
-            className={`py-1 ${pathname == "/store" ? "border-b-[1px]" : ""}`}
+            className={`py-1 ${
+              pathname == "/store" ? "border-b-[1px] border-ascent" : ""
+            } relative hover:after:scale-x-100 hover:after:origin-left 
+                after:content-[''] after:absolute after:left-0 after:-bottom-[8%] 
+                after:w-full after:origin-right after:scale-x-0 after:h-[2px] 
+                after:transition-transform after:duration-300 after:bg-ascent`}
           >
             <Link href="/store">Store</Link>
           </li>
         </ul>
       </nav>
-      <div className="hidden sm:flex justify-center gap-4">
+      <div className="hidden sm:flex justify-center gap-4 w-[131px]">
         {basket?.ident ? (
           <Link href="/basket" className="relative">
             <Image
-              src={`${
-                theme === "light"
-                  ? "/images/icon-basket-dark.png"
-                  : "/images/icon-basket.png"
-              }`}
+              src={"/images/icon-basket.png"}
               alt="Basket Icon"
               width="25"
               height="26"
@@ -66,29 +57,14 @@ const WideScreenMenu = ({
           </Link>
         ) : (
           <Image
-            src={`${
-              theme === "light"
-                ? "/images/icon-basket-dark.png"
-                : "/images/icon-basket.png"
-            }`}
+            src={"/images/icon-basket.png"}
             alt="Basket Icon"
             width="25"
             height="26"
           />
         )}
 
-        {basket?.length < 1 ? (
-          <Image
-            src={`${
-              theme === "light"
-                ? "/images/icon-user-dark.png"
-                : "/images/icon-user.png"
-            }`}
-            alt="User Icon"
-            width="25"
-            height="26"
-          />
-        ) : (
+        {basket && (
           <p
             className="cursor-pointer hover:underline"
             title="Disconnect"

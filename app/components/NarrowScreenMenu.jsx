@@ -11,25 +11,8 @@ const NarrowScreenMenu = ({
   setBasketIdent,
   setIsAuthentificated,
 }) => {
-  const [theme, setTheme] = useState("light");
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const updateTheme = () => {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      setTheme(prefersDark ? "dark" : "light");
-    };
-
-    updateTheme();
-
-    const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
-    mediaQueryList.addEventListener("change", updateTheme);
-
-    return () => mediaQueryList.removeEventListener("change", updateTheme);
-  }, []);
 
   function handleDisconnect() {
     disconnectSession(setBasket, setBasketIdent, setIsAuthentificated);
@@ -101,11 +84,7 @@ const NarrowScreenMenu = ({
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <Image
-                src={`${
-                  theme === "light"
-                    ? "/images/icon-basket-dark.png"
-                    : "/images/icon-basket.png"
-                }`}
+                src={"/images/icon-basket.png"}
                 alt="Basket Icon"
                 width="25"
                 height="26"
@@ -117,11 +96,7 @@ const NarrowScreenMenu = ({
           ) : (
             <div className="py-4 px-10" onClick={() => setMenuOpen(!menuOpen)}>
               <Image
-                src={`${
-                  theme === "light"
-                    ? "/images/icon-basket-dark.png"
-                    : "/images/icon-basket.png"
-                }`}
+                src={"/images/icon-basket.png"}
                 alt="Basket Icon"
                 width="25"
                 height="26"
@@ -129,20 +104,7 @@ const NarrowScreenMenu = ({
             </div>
           )}
 
-          {basket?.length < 1 ? (
-            <div className="py-4 px-10" onClick={() => setMenuOpen(!menuOpen)}>
-              <Image
-                src={`${
-                  theme === "light"
-                    ? "/images/icon-user-dark.png"
-                    : "/images/icon-user.png"
-                }`}
-                alt="User Icon"
-                width="25"
-                height="26"
-              />
-            </div>
-          ) : (
+          {basket && (
             <p
               className="cursor-pointer hover:underline py-4 px-10 text-white-custom"
               title="Disconnect"

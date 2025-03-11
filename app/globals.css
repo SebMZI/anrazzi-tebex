@@ -34,30 +34,6 @@
   --border-light: rgba(255, 255, 255, 0.2);
 }
 
-.logo-light {
-  display: none;
-}
-.logo-dark {
-  display: block;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #ffffff;
-    --foreground: #141414;
-    --font-white: #000000;
-    --font-black: #ffffff;
-    --light-black: hsl(0, 0%, 100%);
-    --border-light: rgba(0, 0, 0, 0.2);
-  }
-  .logo-light {
-    display: block;
-  }
-  .logo-dark {
-    display: none;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
@@ -129,4 +105,8 @@ body {
     font-display: swap;
     src: url(/fonts/UberMove-Bold.woff) format("woff");
   }
+}
+
+.font-bold-custom {
+  font-weight: 700;
 }

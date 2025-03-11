@@ -63,7 +63,7 @@ const StoreCollections = () => {
         <h2 className="font-medium text-4xl sm:text-5xl text-left w-full">
           Our Collections
         </h2>
-        <div className="w-full flex flex-col gap-10">
+        <div className="w-full flex flex-col gap-20">
           {isLoading ? (
             <div className="flex flex-col justify-center items-center w-full h-80 gap-3">
               <div className="animate-spin rounded-full h-8 w-8 border-4 border-spinner-custom"></div>
@@ -72,8 +72,10 @@ const StoreCollections = () => {
           ) : (
             categoriesData?.map((category, _) => (
               <div key={_} className="flex flex-col gap-8">
-                <h3 className="text-3xl font-medium">{category.name}</h3>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
+                <h3 className="text-3xl sm:text-4xl font-medium">
+                  {category.name}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   {category?.packages?.map((scripts, _) => (
                     <ResourceCard resource={scripts} key={_} />
                   ))}

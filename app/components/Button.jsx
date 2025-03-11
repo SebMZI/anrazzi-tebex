@@ -12,7 +12,7 @@ const Button = ({ text, link = "", type = "", action = () => {} }) => {
           onClick={() => action()}
         >
           <button
-            className="bg-ascent w-full sm:w-auto py-3 px-6 rounded-md  text-black"
+            className="bg-ascent w-full min-w-[115px] sm:w-auto py-3 px-6 rounded-md  text-black hover:opacity-80 transition-opacity duration-[400]"
             type={type}
           >
             <span className=" font-medium text-sm sm:text-base">{text}</span>
@@ -20,7 +20,7 @@ const Button = ({ text, link = "", type = "", action = () => {} }) => {
         </Link>
       ) : (
         <button
-          className="bg-ascent w-full sm:w-auto py-3 px-6 rounded-md z-10 text-black"
+          className="bg-ascent w-full min-w-[115px] sm:w-auto py-3 px-6 rounded-md z-10 text-black hover:opacity-80 transition-opacity duration-[400]"
           onClick={() => action()}
           type={type}
         >
