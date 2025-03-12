@@ -25,18 +25,26 @@ const Main = () => {
             mainEntity: [
               {
                 "@type": "Question",
-                name: "How can I get support ?",
+                name: "Are your files protected ?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "It's simple, join our Discord server and open a ticket, the owner or a moderator will answer you.",
+                  text: "Yes, all our files are encrypted by cfx to preserve the intellectual property.",
                 },
               },
               {
                 "@type": "Question",
-                name: "Can I get a custom script ?",
+                name: "I have an issue, can I get assistance?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Of course you can, just reach out to us. You can send a message using the form below or open a ticket on the Discord server.",
+                  text: "Join our Discord server for comprehensive support. Response times may vary due to time zone differences, so we appreciate your patience!",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I unsubscribe ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes, you can unsubscribe at any time. Your package will be instantly removed from Keymaster, and your access will be revoked until you subscribe again.",
                 },
               },
               {
@@ -44,30 +52,35 @@ const Main = () => {
                 name: "Are your scripts updated often ?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Our scripts are updated when needed. If a bug occurs we'll take care of it. You'll be notified when an fix has been done.",
+                  text: "Our scripts are updated when needed. If a bug occurs we'll take care of it. You'll be notified when a fix has been done.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I get a custom script ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Of course! Just reach out to us via the form below or open a ticket on our Discord server. However, please note that prices may be higher later.",
                 },
               },
             ],
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://anrazzi.fr",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Store",
-                item: "https://anrazzi.fr/store",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Basket",
-                item: "https://anrazzi.fr/basket",
-              },
-            ],
+            breadcrumb: {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Accueil",
+                  item: "https://anrazzi.fr",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Boutique",
+                  item: "https://anrazzi.fr/store",
+                },
+              ],
+            },
             publisher: {
               "@type": "Organization",
               name: "Anrazzi - Territa",
