@@ -14,7 +14,7 @@ const ResourceCard = ({ resource }) => {
           <Link href={`/store/${resource?.id}`}>
             <Image
               src={content[resource?.id]?.mainImg?.href || ""}
-              alt={resource?.name}
+              alt={`${resource?.name} Image`}
               width={1280}
               height={720}
               className="w-full h-auto object-contain rounded aspect-video"

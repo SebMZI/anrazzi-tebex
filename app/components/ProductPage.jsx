@@ -173,7 +173,7 @@ const ProductPage = () => {
                 src={content[id].mainImg.href}
                 width={1280}
                 height={720}
-                alt={`Image du produit ${product.name}`}
+                alt={`Product image ${product.name}`}
                 className="rounded"
               />
             </div>

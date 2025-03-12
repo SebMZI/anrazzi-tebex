@@ -4,6 +4,7 @@ import { basketContext } from "@/app/layout";
 import { createBasket, fetchBasket, getAuthLink } from "../utils/fetch";
 import { decryptCookie, showNotification } from "../utils/functions";
 import ResourceCard from "./ResourceCard";
+import content from "@/app/_data/content.json";
 
 const StoreCollections = () => {
   const [categoriesData, setCategoriesData] = useState();
@@ -56,6 +57,46 @@ const StoreCollections = () => {
     getBasket(decryptCookie());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthentificated]);
+
+  const generateSchema = () => {
+    if (!categoriesData) return;
+
+    const generateSchema = () => {
+      if (!categoriesData) return;
+
+      const categoriesSchema = categoriesData.map((category) => ({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: category.name,
+        url: `https://anrazzi.fr/store/`,
+        itemListElement: category.packages?.map((product) => ({
+          "@type": "Product",
+          name: content[product.id].title,
+          url: `https://anrazzi.fr/store/${product.id}`,
+          image: content[product.id].mainImg,
+          description: content[product.id].description,
+          offers: {
+            "@type": "Offer",
+            url: `https://anrazzi.fr/store/${product.id}`,
+            priceCurrency: "EUR",
+            price: product.base_price,
+            itemCondition: "https://schema.org/NewCondition",
+            availability: "https://schema.org/InStock",
+            seller: {
+              "@type": "Organization",
+              name: "Anrazzi Store",
+            },
+          },
+        })),
+      }));
+
+      return categoriesSchema;
+    };
+
+    return categoriesSchema;
+  };
+
+  const schemaData = generateSchema();
 
   return (
     <section id="collections" className="py-[4.5rem] sm:py-[8.5rem]">
