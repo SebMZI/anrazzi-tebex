@@ -61,37 +61,31 @@ const StoreCollections = () => {
   const generateSchema = () => {
     if (!categoriesData) return;
 
-    const generateSchema = () => {
-      if (!categoriesData) return;
-
-      const categoriesSchema = categoriesData.map((category) => ({
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        name: category.name,
-        url: `https://anrazzi.fr/store/`,
-        itemListElement: category.packages?.map((product) => ({
-          "@type": "Product",
-          name: content[product.id].title,
+    const categoriesSchema = categoriesData.map((category) => ({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: category.name,
+      url: `https://anrazzi.fr/store/`,
+      itemListElement: category.packages?.map((product) => ({
+        "@type": "Product",
+        name: content[product.id].title,
+        url: `https://anrazzi.fr/store/${product.id}`,
+        image: content[product.id].mainImg,
+        description: content[product.id].description,
+        offers: {
+          "@type": "Offer",
           url: `https://anrazzi.fr/store/${product.id}`,
-          image: content[product.id].mainImg,
-          description: content[product.id].description,
-          offers: {
-            "@type": "Offer",
-            url: `https://anrazzi.fr/store/${product.id}`,
-            priceCurrency: "EUR",
-            price: product.base_price,
-            itemCondition: "https://schema.org/NewCondition",
-            availability: "https://schema.org/InStock",
-            seller: {
-              "@type": "Organization",
-              name: "Anrazzi Store",
-            },
+          priceCurrency: "EUR",
+          price: product.base_price,
+          itemCondition: "https://schema.org/NewCondition",
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "Organization",
+            name: "Anrazzi Store",
           },
-        })),
-      }));
-
-      return categoriesSchema;
-    };
+        },
+      })),
+    }));
 
     return categoriesSchema;
   };
@@ -126,6 +120,21 @@ const StoreCollections = () => {
           )}
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Store",
+            name: "Anrazzi Store",
+            url: "https://anrazzi.fr/store",
+            logo: "https://anrazzi.fr/images/anrazzi-logo.png",
+            image: "https://anrazzi.fr/images/anrazzi-opengraph.webp",
+            mainEntityOfPage: "https://anrazzi.fr/store",
+            hasPart: schemaData,
+          }),
+        }}
+      />
     </section>
   );
 };
