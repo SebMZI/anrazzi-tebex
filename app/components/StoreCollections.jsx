@@ -70,12 +70,14 @@ const StoreCollections = () => {
         "@type": "Product",
         name: content[product.id].title,
         url: `https://anrazzi.fr/store/${product.id}`,
-        image: content[product.id].mainImg,
+        image: `https://anrazzi.fr/${content[product.id].mainImg.href}`,
         description: content[product.id].description,
         offers: {
           "@type": "Offer",
           url: `https://anrazzi.fr/store/${product.id}`,
           priceCurrency: "EUR",
+          shippingDetails: "Electronic",
+          hasMerchantReturnPolicy: false,
           price: product.base_price,
           itemCondition: "https://schema.org/NewCondition",
           availability: "https://schema.org/InStock",
@@ -131,6 +133,13 @@ const StoreCollections = () => {
             logo: "https://anrazzi.fr/images/anrazzi-logo.png",
             image: "https://anrazzi.fr/images/anrazzi-opengraph.webp",
             mainEntityOfPage: "https://anrazzi.fr/store",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "123 Rue Fictive", // Adresse fictive
+              addressLocality: "Paris", // Ville fictive
+              postalCode: "75000", // Code postal fictif
+              addressCountry: "FR", // Pays fictif
+            },
             hasPart: schemaData,
           }),
         }}
