@@ -6,31 +6,31 @@ export default async function sitemap() {
     {
       url: BASE_URL,
       lastModified: new Date(),
-      changeFrequency: "montly",
+      changefreq: "montly",
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/store`,
       lastModified: new Date(),
-      changeFrequency: "montly",
+      changefreq: "montly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/terms/impressum`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changefreq: "yearly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/terms/checkout`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changefreq: "yearly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/terms/privacy`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changefreq: "yearly",
       priority: 0.3,
     },
   ];
