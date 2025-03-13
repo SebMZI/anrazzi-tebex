@@ -61,7 +61,7 @@
             "AI truck departures for realistic port activity.",
             "Customizable settings to fine-tune payouts and mechanics."
         ],
-        "frameworks": ["ESX"],
+        "frameworks": ["ESX", "QBCore", "Custom"],
         "mainImg":  {
             "href": "/images/packages/handler_job_main_img.jpg"
         },
