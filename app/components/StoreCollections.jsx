@@ -2,7 +2,11 @@
 import { useContext, useEffect, useState } from "react";
 import { basketContext } from "@/app/layout";
 import { createBasket, fetchBasket, getAuthLink } from "../utils/fetch";
-import { decryptCookie, showNotification } from "../utils/functions";
+import {
+  createNewBasket,
+  decryptCookie,
+  showNotification,
+} from "../utils/functions";
 import ResourceCard from "./ResourceCard";
 import content from "@/app/_data/content.json";
 
@@ -44,6 +48,7 @@ const StoreCollections = () => {
       console.error(e);
     }
   }
+  
   useEffect(() => {
     fetchCat();
     if (!isAuthentificated) {
@@ -54,9 +59,15 @@ const StoreCollections = () => {
       }
     }
 
-    getBasket(decryptCookie());
+    const cookie = decryptCookie();
+    if (cookie === null) {
+      createNewBasket(isAuthentificated, setBasketIdent);
+    } else {
+      getBasket(cookie);
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthentificated]);
+  }, [isAuthentificated, basketIdent]);
 
   const generateSchema = () => {
     if (!categoriesData) return;
