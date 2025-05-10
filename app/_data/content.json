@@ -3,7 +3,7 @@
         "html": "<span class=\"font-bold-custom\">NEW!!</span> Get All the scripts in one with our <span class=\"font-bold-custom\">Premium Pack</span>."
     },
     "hero_home": {
-        "title": "Gas Station",
+        "title": "Gas Station - Open Source",
         "subtitle": "Realistic fueling for gas & electric vehicles—upgrade your server’s immersion!",
         "mainImg":  {
             "href": "/images/packages/gas_station_main_img.jpg"
