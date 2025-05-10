@@ -50,7 +50,7 @@
         "type": "Abonnement"
     },
     "6574000": {
-        "title": "Handler Job",
+        "title": "Handler Job - Open Source",
         "subtitle": "Run the docks, load containers, and earn big—bring your port to life!",
         "description": "Transform your server's port into a bustling logistics hub with the Handler Job. This immersive script lets players step into the role of a Port Handler, managing container loading and trailer operations while earning dynamic rewards. Fully integrated with ESX and featuring an intuitive RageUI menu, it offers realistic gameplay, customizable settings, and a seamless setup that transforms your port into the heart of activity.",
         "keyFeatures": [
@@ -70,7 +70,7 @@
         "type": "Package"
     },
     "6728069": {
-        "title": "Gas Station",
+        "title": "Gas Station - Open Source",
         "subtitle": "Realistic fueling for gas & electric vehicles—upgrade your server’s immersion!",
         "description": "Enhance your server’s roleplay with our Advanced Fuel Station Script. Fully compatible with ESX, QBCore, and custom frameworks, this state-of-the-art solution delivers realistic fueling mechanics for both gasoline and electric vehicles. Enjoy seamless integration, multi-fuel support, and a handy jerrycan feature for on-the-go refueling—all securely encrypted and easily customizable to fit your unique gameplay style.",
         "keyFeatures": [
